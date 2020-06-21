@@ -4,7 +4,7 @@ public class Armas {
 	private int bonus;
 	private boolean ehdestruida;
 	
-	public Armas(int a, int b, boolean d) {
+	public Armas(int a, int b, boolean d) { //ablubluulullélé
 		alcance = a;
 		bonus = b;
 		ehdestruida = d;
