@@ -4,8 +4,8 @@ public class Armas {
 	private int bonus;
 	private boolean ehdestruida;
 	
-	//Valeska passou por aqui
-	public Armas(int a, int b, boolean d) {
+
+	public Armas(int a, int b, boolean d) { //ablubluulull�l�
 		alcance = a;
 		bonus = b;
 		ehdestruida = d;
