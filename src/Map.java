@@ -42,6 +42,7 @@ public class Map {
 		this.salas = salas;
 	}
 	
+	
 	public void createRooms(Sala room){
 		
 		this.salas.add(room);
@@ -64,7 +65,7 @@ public class Map {
 		
 		for(int i = 0; i < t.size();i++) {
 			int indice = random.nextInt(this.salas.size()-1);
-			this.salas.get(indice).setTesouros(t.get(i));
+			this.salas.get(0).setTesouros(t.get(1));
 		}
 		
 	}

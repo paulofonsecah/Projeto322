@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Sala {
 	
@@ -34,19 +35,95 @@ public class Sala {
 		return monstros;
 	}
 	public void setMonstros(Monster monstro) {
-		this.monstros.add(monstro);
+		if(monstro.getX() <= this.x-1) {
+			if(monstro.getY() <= this.y-1) {
+				this.monstros.add(monstro);
+			}else {
+				if(this.y-1 != 0) {
+					Random random = new Random();
+					int indice = random.nextInt(this.y-1);
+					monstro.setY(indice);
+					this.setMonstros(monstro);
+				}else {
+					monstro.setY(0);
+					this.setMonstros(monstro);
+				}
+			}
+		}else {
+			if(this.x-1 != 0) {
+				Random random = new Random();
+				int indice = random.nextInt(this.x-1);
+				monstro.setX(indice);
+				this.setMonstros(monstro);
+			}else {
+				monstro.setX(0);
+				this.setMonstros(monstro);
+			}
+		}
 	}
+	
 	public ArrayList<Trap> getArmadilhas() {
 		return armadilhas;
 	}
+	
 	public void setArmadilhas(Trap armadilha) {
-		this.armadilhas.add(armadilha);
+		if(armadilha.getX() <= this.x-1) {
+			if(armadilha.getY() <= this.y-1) {
+				this.armadilhas.add(armadilha);
+			}else {
+				if(this.y-1 != 0) {
+					Random random = new Random();
+					int indice = random.nextInt(this.y-1);
+					armadilha.setY(indice);
+					this.setArmadilhas(armadilha);
+				}else {
+					armadilha.setY(0);
+					this.setArmadilhas(armadilha);
+				}
+			}
+		}else {
+			if(this.x-1 != 0) {
+				Random random = new Random();
+				int indice = random.nextInt(this.x-1);
+				armadilha.setX(indice);
+				this.setArmadilhas(armadilha);
+			}else {
+				armadilha.setX(0);
+				this.setArmadilhas(armadilha);
+			}
+		}
 	}
+		
 	public ArrayList<Treasures> getTesouros() {
 		return tesouros;
 	}
-	public void setTesouros(Treasures tesouro) {
-		this.tesouros.add(tesouro);
+	
+	public void setTesouros(Treasures tesouro) {		
+		if(tesouro.getX() <= this.x-1) {
+			if(tesouro.getY() <= this.y-1) {
+				this.tesouros.add(tesouro);
+			}else {
+				if(this.y-1 != 0) {
+					Random random = new Random();
+					int indice = random.nextInt(this.y-1);
+					tesouro.setY(indice);
+					this.setTesouros(tesouro);
+				}else {
+					tesouro.setY(0);
+					this.setTesouros(tesouro);
+				}
+			}
+		}else {
+			if(this.x-1 != 0) {
+				Random random = new Random();
+				int indice = random.nextInt(this.x-1);
+				tesouro.setX(indice);
+				this.setTesouros(tesouro);
+			}else {
+				tesouro.setX(0);
+				this.setTesouros(tesouro);
+			}
+		}
 	}
 
 
@@ -101,8 +178,13 @@ public class Sala {
 	public void createRoom(){
 		for (int i = 0; i < this.x; i++){
 			for (int j = 0; j<this.y; j++){
-				this.room[i][j] = new Empty (i,j);
+				if(!(this.room[i][j] instanceof Nulo)) {
+					this.room[i][j] = new Empty (i,j);
+				}
 			}
+		}
+		for(int i  = 0; i < this.portas.size(); i++) {
+			this.room[this.portas.get(i).getX()][this.portas.get(i).getY()] = this.portas.get(i);
 		}
 		for(int i  = 0; i < this.monstros.size(); i++) {
 			if(this.room[this.monstros.get(i).getX()][this.monstros.get(i).getY()] instanceof Empty){
@@ -126,9 +208,10 @@ public class Sala {
 			}
 			
 		}
-		for(int i  = 0; i < this.portas.size(); i++) {
-			this.room[this.portas.get(i).getX()][this.portas.get(i).getY()] = this.portas.get(i);
-		}
+	}
+	
+	public void addnulo(int x, int y) {
+		this.room[x][y] = new Nulo(x,y);
 	}
 	
 	public void imprime() {
@@ -144,6 +227,8 @@ public class Sala {
 					System.out.print("T");
 				}else if(this.room[i][j] instanceof Door) {
 					System.out.print("P");
+				}else if(this.room[i][j] instanceof Nulo) {
+					System.out.print("X");
 				}
 			}
 			System.out.println();
