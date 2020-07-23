@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Random;
+
 
 public class Map {
 	
@@ -7,10 +9,10 @@ public class Map {
 	private ArrayList<Sala> salas;
 	private Sala map[][];
 	
-	public Map(int px, int py, ArrayList<Sala> sala){
+	public Map(int px, int py){
 		x = px;
 		y = py;
-		salas = sala;
+		salas = new ArrayList<Sala>();
 		map = new Sala[x][y];
 	}
 	
@@ -40,11 +42,41 @@ public class Map {
 		this.salas = salas;
 	}
 	
+	
+	public void createRooms(Sala room){
+		
+		this.salas.add(room);
+		
+	}
+	
+	public void randomMap(ArrayList<Monster> m, ArrayList<Trap> a, ArrayList<Treasures> t) {
+		
+		Random random = new Random();
+		
+		for(int i = 0; i < m.size();i++) {
+			int indice = random.nextInt(this.salas.size()-1);
+			this.salas.get(indice).setMonstros(m.get(i));
+		}
+		
+		for(int i = 0; i < a.size();i++) {
+			int indice = random.nextInt(this.salas.size()-1);
+			this.salas.get(indice).setArmadilhas(a.get(i));
+		}
+		
+		for(int i = 0; i < t.size();i++) {
+			int indice = random.nextInt(this.salas.size()-1);
+			this.salas.get(0).setTesouros(t.get(1));
+		}
+		
+	}
+	
 	public void createMap(){
 		for(int i  = 0; i < this.salas.size(); i++) {
+			this.salas.get(i).createRoom();
 			this.map[this.salas.get(i).getpX()][this.salas.get(i).getpY()] = this.salas.get(i);
 		}
 	}
+	
 	
 	public void imprimeMap() {
 		for (int i = 0; i < this.x; i++){
@@ -52,6 +84,7 @@ public class Map {
 				if(map[i][j] != null) {
 					this.map[i][j].imprime();
 				}
+				System.out.println("-");
 			}
 			System.out.println("-");
 		}
