@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Heroi {
+public class Heroi extends MapElement {
 	
 	public char name;
 	private int attack;

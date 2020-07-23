@@ -4,7 +4,7 @@ public class Feiticeiro extends Heroi{
 	
 	public ArrayList<Magias> magia;
 	
-	public Elfo(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p, ArrayList<Magias> m char n, int at, int d, int mi, int b) {
+	public Elfo(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p, ArrayList<Magias> m, char n) {
 		this.name=n;
 		this.attack=1;
 		this.deffense=2;
