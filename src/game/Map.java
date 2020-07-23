@@ -1,3 +1,4 @@
+ package game;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -65,7 +66,7 @@ public class Map {
 		
 		for(int i = 0; i < t.size();i++) {
 			int indice = random.nextInt(this.salas.size()-1);
-			this.salas.get(0).setTesouros(t.get(1));
+			this.salas.get(indice).setTesouros(t.get(i));
 		}
 		
 	}
@@ -80,13 +81,15 @@ public class Map {
 	
 	public void imprimeMap() {
 		for (int i = 0; i < this.x; i++){
-			for (int j = 0; j<this.y; j++){
-				if(map[i][j] != null) {
-					this.map[i][j].imprime();
+			for (int k = 0; k<this.map[i][0].getX(); k++){
+				for (int j = 0; j<this.y; j++){
+					if(map[i][j] != null) {
+						this.map[i][j].imprime(k);
+						System.out.print("|");
+					}
 				}
-				System.out.println("-");
+				System.out.println("");
 			}
-			System.out.println("-");
 		}
 	}
 

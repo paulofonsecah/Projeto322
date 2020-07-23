@@ -1,10 +1,12 @@
+package mapasDefaut;
+import game.*;
+
+
 import java.util.ArrayList;
 
-public class Main {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+public class Mapa1 {
+	
+	public void criarMapa(Map map) {
 		final Monster m = new Monster(2,2);
 		final Monster m2 = new Monster(3,2);
 		final Monster m3 = new Monster(1,2);
@@ -103,7 +105,7 @@ public class Main {
 		//room.createRoom();
 		//ArrayList<Sala> sA = new ArrayList<Sala>();
 		//sA.add(room);
-		final Map map = new Map(4,4);
+		map = new Map(4,4);
 		
 		map.createRooms(room);
 		map.createRooms(room2);
@@ -132,7 +134,6 @@ public class Main {
 		map.createMap();
 		map.imprimeMap();
 		//room.imprime();
-
 	}
 
 }

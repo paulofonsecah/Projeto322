@@ -1,5 +1,9 @@
+package game;
 import java.util.ArrayList;
 import java.util.Random;
+
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
+import com.sun.xml.internal.ws.util.StringUtils;
 
 public class Sala {
 	
@@ -232,6 +236,29 @@ public class Sala {
 				}
 			}
 			System.out.println();
+		}
+	}
+	public void imprime(int k) {
+		for (int j = 0; j < this.y; j++){
+			if(k<this.x) {
+				if(this.room[k][j] instanceof Empty) {
+					System.out.print("*");
+				}else if(this.room[k][j] instanceof Monster) {
+					System.out.print("M");
+				}else if(this.room[k][j] instanceof Trap) {
+					System.out.print("A");
+				}else if(this.room[k][j] instanceof Treasures) {
+					System.out.print("T");
+				}else if(this.room[k][j] instanceof Door) {
+					System.out.print("*");
+				}else if(this.room[k][j] instanceof Nulo) {
+					System.out.print("X");
+				}	
+			}else {
+				System.out.print("X");
+				
+			}
+			
 		}
 	}
 	

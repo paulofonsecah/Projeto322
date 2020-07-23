@@ -1,3 +1,4 @@
+package game;
 
 public class Empty extends MapElement{
 	

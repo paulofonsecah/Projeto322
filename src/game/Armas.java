@@ -1,3 +1,4 @@
+package game;
 public class Armas extends MapElement{
 	
 	private int alcance;

@@ -1,3 +1,4 @@
+package game;
 
 public class Trap extends MapElement{
 	
