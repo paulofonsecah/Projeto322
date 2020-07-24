@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Mapa2 {
 	
-	public void criarMapa(Map map) {
+	public Map criarMapa(Map map) {
 		final Monster m = new Monster(2,2);
 		final Monster m2 = new Monster(3,2);
 		final Monster m3 = new Monster(1,1);
@@ -113,10 +113,13 @@ public class Mapa2 {
 		
 		
 		map.createMap();
-		map.map[1][1].room[4][4] = new Heroi(2,2);
+
 		
-		map.imprimeMap();
+		//map.imprimeMap();
+		return map;
 		//room.imprime();
 	}
+	
+
 
 }

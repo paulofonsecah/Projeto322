@@ -1,20 +1,24 @@
 
 public class Heroi extends MapElement{
+	protected int salaX;
+	protected int salaY;
 	
-	public Heroi(int x, int y) {
+	public Heroi(int x, int y, int salaX, int salaY) {
 		super(x,y);
+		this.salaX = salaX;
+		this.salaY = salaY;
 	}
-	public void moveHeroiVertical(int delta) {
-        this.y = this.y + delta;
-        
+
+    public int getSalaX(){
+    	return salaX;
     }
-
-    public void moveHeroiHorizontal(int delta) {
-        this.x = this.x + delta;
-        
-        }
-
-	
-
-
+    public void setSalaX(int salaX){
+    	this.salaX = salaX;
+    }
+    public int getSalaY(){
+    	return salaY;
+    }
+    public void setSalaY(int salaY){
+    	this.salaY = salaY;
+    }
 }
