@@ -1,39 +1,38 @@
 import java.util.Scanner;
+import mapasDefaut.*;
 
 public class Main {
-
-	Scanner keyboard = new Scanner ( System .in);
-	boolean running = true;
-    while (running) {
-    	//roda o jogo
-    	if(hp personagem<= 0) {
-    		running = false ;
-    	}
-    	System.out.print(" Qual a sua ação: 1- atacar, 2- mover ou 3- procurar tesouro em volta ");
-    	String command = keyboard . nextLine ();
-    	if ( command . compareTo (" 0 ") == 0)
-    	running = false ;
-    	if ( command . compareTo (" 1 ") == 0)
-    		//ataca
-    		// cria condição para mago usar magia
-    	if ( command . compareTo (" 2 ") == 0)
-    		
-    	if ( command . compareTo (" 3 ") == 0)
-    		//procura tesouro
-    		
-    		
-    		
-      if( inimigos == 0) {
-    	 running = false ;
-      }	 
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Heroi heroi  = new Heroi(2,2);
+		final Map mapa1  =new Map(4,4);
+		final Mapa2 mapas = new Mapa2();
+		mapas.criarMapa(mapa1);
+		mapa1.imprimeMap();
+		Scanner keyboard = new Scanner ( System .in);
+		boolean running = true ;
+        while ( running ) {
+        
+            System . out. print (" Enter the command : ");
+            String command = keyboard . nextLine ();
+            if ( command . compareTo (" quit ") == 0) {
+                running = false ;
+            } else if ( command . compareTo ("s") == 0) {
+                heroi.moveHeroiVertical(-1);
+                mapa1.imprimeMap();
+            } else if ( command . compareTo ("a") == 0) {
+                heroi.moveHeroiHorizontal(-1);
+                mapa1.imprimeMap();
+            } else if ( command . compareTo ("w") == 0) {
+                heroi.moveHeroiVertical(1);
+                mapa1.imprimeMap();
+            } else if ( command . compareTo ("d") == 0) {
+                heroi.moveHeroiHorizontal(1);
+                mapa1.imprimeMap();
+            }
+            }	
+        
+	}
       
-    }
-     if(hp>0 && inimigos ==0) {
-    
-    System.out.print(" Você venceu! : ");
-     }
-     else(){
-    System.out.print(" Você foi derrotado! : ");
-     }
-     
 }
