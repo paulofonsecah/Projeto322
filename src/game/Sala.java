@@ -238,7 +238,7 @@ public class Sala {
 			System.out.println();
 		}
 	}
-	public void imprime(int k) {
+	public void imprime(int k, boolean s) {
 		for (int j = 0; j < this.y; j++){
 			if(k<this.x) {
 				if(this.room[k][j] instanceof Empty) {

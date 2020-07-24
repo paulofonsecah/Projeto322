@@ -84,7 +84,11 @@ public class Map {
 			for (int k = 0; k<this.map[i][0].getX(); k++){
 				for (int j = 0; j<this.y; j++){
 					if(map[i][j] != null) {
-						this.map[i][j].imprime(k);
+						boolean s = false;
+						if(k == this.map[i][0].getX()-1) {
+							s = true;
+						}
+						this.map[i][j].imprime(k,s);
 						System.out.print("|");
 					}
 				}
