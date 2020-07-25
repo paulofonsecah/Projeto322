@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
+import com.sun.xml.internal.ws.util.StringUtils;
+
 public class Sala {
 	
 	//Elementos da sala
@@ -15,7 +18,7 @@ public class Sala {
 	private int pX;
 	private int pY;
 	//Sala propriamente dita
-	private MapElement room[][];
+	public MapElement room[][];
 	
 	
 	public Sala (ArrayList<Door> p, int tx, int ty, int px, int py) {
@@ -190,21 +193,21 @@ public class Sala {
 			if(this.room[this.monstros.get(i).getX()][this.monstros.get(i).getY()] instanceof Empty){
 				this.room[this.monstros.get(i).getX()][this.monstros.get(i).getY()] = this.monstros.get(i);
 			}else {
-				System.out.println("J√° existe algo nesta posi√ß√£o, este monstro n√£o foi adicionado!");
+				System.out.println("J· existe algo nesta posiÁ„o, este monstro n„o foi adicionado!");
 			}
 		}
 		for(int i  = 0; i < this.armadilhas.size(); i++) {
 			if(this.room[this.armadilhas.get(i).getX()][this.armadilhas.get(i).getY()] instanceof Empty){
 				this.room[this.armadilhas.get(i).getX()][this.armadilhas.get(i).getY()] = this.armadilhas.get(i);
 			}else {
-				System.out.println("J√° existe algo nesta posi√ß√£o, esta armadilha n√£o foi adicionada!");
+				System.out.println("J· existe algo nesta posiÁ„o, esta armadilha n„o foi adicionada!");
 			}
 		}
 		for(int i  = 0; i < this.tesouros.size(); i++) {
 			if(this.room[this.tesouros.get(i).getX()][this.tesouros.get(i).getY()] instanceof Empty){
 				this.room[this.tesouros.get(i).getX()][this.tesouros.get(i).getY()] = this.tesouros.get(i);
 			}else {
-				System.out.println("J√° existe algo nesta posi√ß√£o, este tesouro n√£o foi adicionado!");
+				System.out.println("J· existe algo nesta posiÁ„o, este tesouro n„o foi adicionado!");
 			}
 			
 		}
@@ -229,9 +232,36 @@ public class Sala {
 					System.out.print("P");
 				}else if(this.room[i][j] instanceof Nulo) {
 					System.out.print("X");
+				}else if(this.room[i][j] instanceof Heroi) {
+					System.out.print("H");
 				}
 			}
 			System.out.println();
+		}
+	}
+	public void imprime(int k) {
+		for (int j = 0; j < this.y; j++){
+			if(k<this.x) {
+				if(this.room[k][j] instanceof Empty) {
+					System.out.print("*");
+				}else if(this.room[k][j] instanceof Monster) {
+					System.out.print("M");
+				}else if(this.room[k][j] instanceof Trap) {
+					System.out.print("A");
+				}else if(this.room[k][j] instanceof Treasures) {
+					System.out.print("T");
+				}else if(this.room[k][j] instanceof Door) {
+					System.out.print("*");
+				}else if(this.room[k][j] instanceof Nulo) {
+					System.out.print("X");
+				}else if(this.room[k][j] instanceof Heroi) {
+					System.out.print("H");
+				}	
+			}else {
+				System.out.print("X");
+				
+			}
+			
 		}
 	}
 	
