@@ -1,3 +1,4 @@
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Action {
 	Map mapa;
@@ -30,6 +31,19 @@ public class Action {
             System.out.printf("Não é possivel se mover nesta direção. Motivo: há um tesouro nela  \n");	
             return 0;
            }
+      /*  else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()+y][hero.getX()+x] instanceof Trap){
+        	int aleatNum;
+        	aleatNum = ThreadLocalRandom.current().nextInt(1, 2);
+            if(aleatNum == 1) {
+            	System.out.printf("Você caiu em uma armadilha e recebeu 2 de dano\n");
+            	hero.setBody (hero.getBody - 2);
+            	return 0;
+            }
+            else{
+            System.out.printf("Você ficou preso em uma armadilha e não pode se mover nesse turno\n");
+            return 2;
+            }
+        }*/
         else if(hero.getY()+y >=4 || hero.getX()+x >=4 || hero.getY()+y <=0 || hero.getX()+x <=0 ){
         	System.out.printf("Não é possivel se mover nessa direção. Motivo: parede \n");
         	return 0;

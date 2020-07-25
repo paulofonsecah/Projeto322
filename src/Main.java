@@ -49,21 +49,25 @@ public class Main {
                     	sucesso = mov.moveHeroi(0, 1);                        
                         mapa1.imprimeMap();
                         if(sucesso == 1) energia -= 1;
+                        else if(sucesso == 2) energia = 0;
                     } else if ( command . compareTo ("a") == 0) {
                         mov = new Action(mapa1, hero);
                         sucesso = mov.moveHeroi(-1, 0);
                         mapa1.imprimeMap();
                         if(sucesso == 1) energia -= 1;
+                        else if(sucesso == 2) energia = 0;
                     } else if ( command . compareTo ("w") == 0) {
                         mov = new Action(mapa1, hero);
                         sucesso = mov.moveHeroi(0, -1);
                         mapa1.imprimeMap();
                         if(sucesso == 1) energia -= 1;
+                        else if(sucesso == 2) energia = 0;
                     } else if ( command . compareTo ("d") == 0) {
                         mov = new Action(mapa1, hero);
                         sucesso = mov.moveHeroi(1, 0);
                         mapa1.imprimeMap();
                         if(sucesso == 1) energia -= 1;
+                        else if(sucesso == 2) energia = 0;
                     }
                     else if ( command . compareTo ("p") == 0) {
                         energia = 0;
