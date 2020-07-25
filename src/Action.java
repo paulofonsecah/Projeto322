@@ -17,13 +17,31 @@ public class Action {
 	}
 	
 	
-	public void moveHeroi(int x, int y){
-        mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = new Empty(0,0);
-        hero.setX(hero.getX()+x); 
-        hero.setY(hero.getY()+y); 
-        mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = hero;	
-	}
-	
+	public int moveHeroi(int x, int y){
+		if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()+y][hero.getX()+x] instanceof Monster) {
+        	System.out.print("Não é possivel se mover nesta direção. Motivo: há um monstro nela  \n");
+        	return 0;
+        }
+        else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()+y][hero.getX()+x] instanceof Door){
+             System.out.printf("Deseja acessar a porta? Pressione 'e' \n");	
+             return 0;
+            }
+        else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()+y][hero.getX()+x] instanceof Treasures){
+            System.out.printf("Não é possivel se mover nesta direção. Motivo: há um tesouro nela  \n");	
+            return 0;
+           }
+        else if(hero.getY()+y >=4 || hero.getX()+x >=4 || hero.getY()+y <=0 || hero.getX()+x <=0 ){
+        	System.out.printf("Não é possivel se mover nessa direção. Motivo: parede \n");
+        	return 0;
+        }
+	    else{
+		    mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = new Empty(0,0);
+	        hero.setX(hero.getX()+x); 
+	        hero.setY(hero.getY()+y); 
+	        mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = hero;
+	        return 1;
+	 }
+}
 	
 	
 	/*
