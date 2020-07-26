@@ -1,3 +1,5 @@
+import mapElement.herois.Heroi;
+import mapElement.monstros.Monster;
 
 public class Action {
 	Map mapa;
