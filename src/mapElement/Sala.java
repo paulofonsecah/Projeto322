@@ -292,12 +292,6 @@ public class Sala {
 					}else {
 						System.out.print("M");
 					}
-				}else if(this.room[k][j] instanceof Trap) {
-					if (s) {
-						System.out.print("A͟");
-					}else {
-						System.out.print("A");
-					}
 				}else if(this.room[k][j] instanceof Treasures) {
 					if (s) {
 						System.out.print("T͟");

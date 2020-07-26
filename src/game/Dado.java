@@ -49,6 +49,12 @@ public class Dado {
 		return dadoNum;
 		}
 
+	public int rolarDado() {
+		int i, aleatNum, n;
+		aleatNum = ThreadLocalRandom.current().nextInt(1, 7);
+		return aleatNum;
+	}
+
 	public ArrayList<Integer>  rolarDadoAttack(int numVezes) {
 		int i, aleatNum, n;
 		n = numVezes;

@@ -1,4 +1,4 @@
-package magias;
+package Itens.magias;
 import Itens.Item;
 import mapElement.Personagem;
 

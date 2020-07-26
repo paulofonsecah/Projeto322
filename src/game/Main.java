@@ -1,4 +1,5 @@
 package game;
+import Itens.magias.MagicMissile;
 import mapasDefaut.*;
 
 import java.io.IOException;
@@ -64,8 +65,9 @@ public class Main {
             else if(command.compareTo("a") == 0){
                 System.out.printf("Com : a- arma m -magica\n");
                 command = keyboard.nextLine ();
-                System.out.printf("Onde esta o mostro: w - cima; a - esquerda; s - baixo; d - direita; p - parar\n");
                 if (command.compareTo ("a") == 0) {
+                    System.out.printf("Onde esta o mostro: w - cima; a - esquerda; s - baixo; d - direita; p - parar\n");
+                    command = keyboard.nextLine ();
                     if (command.compareTo ("s") == 0) {
                         mov = new Action(mapa1, hero);
                         mov.atacarMostro(1, 0);
@@ -84,20 +86,30 @@ public class Main {
                         mapa1.imprimeMap();
                     }
                 }else if(command.compareTo ("m") == 0){
+                    System.out.printf("Onde esta o mostro: w - cima; a - esquerda; s - baixo; d - direita; p - parar\n");
+                    command = keyboard.nextLine ();
                     if (command.compareTo ("s") == 0) {
-
+                        mov = new Action(mapa1, hero);
+                        MagicMissile m= new MagicMissile();
+                        mov.lansarMagia(1, 0,m);
+                        mapa1.imprimeMap();
                     } else if ( command . compareTo ("a") == 0) {
-
+                        mov = new Action(mapa1, hero);
+                        MagicMissile m= new MagicMissile();
+                        mov.lansarMagia(0, 1,m);
+                        mapa1.imprimeMap();
                     } else if ( command . compareTo ("w") == 0) {
                         mov = new Action(mapa1, hero);
-                        mov.atacarMostro(-1, 0);
+                        MagicMissile m= new MagicMissile();
+                        mov.lansarMagia(-1, 0,m);
                         mapa1.imprimeMap();
                     } else if ( command . compareTo ("d") == 0) {
-
+                        mov = new Action(mapa1, hero);
+                        MagicMissile m= new MagicMissile();
+                        mov.lansarMagia(0, -1,m);
+                        mapa1.imprimeMap();
                     }
                 }
-
-                command = keyboard.nextLine ();
 
             }
             else if(command.compareTo("m") == 0){

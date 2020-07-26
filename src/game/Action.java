@@ -1,9 +1,8 @@
 package game;
 
-import mapElement.Door;
-import mapElement.Empty;
-import mapElement.Map;
-import mapElement.Treasures;
+import Itens.magias.Magia;
+import Itens.magias.MagicMissile;
+import mapElement.*;
 import mapElement.herois.Heroi;
 import mapElement.monstros.Monster;
 
@@ -92,12 +91,104 @@ public class Action {
 			System.out.println("ops isso nao eh um mostro");
 		}
 	}
+	public void lancarMagicaMostro(int x, int y){
+		if(mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement(hero.getX()+x,hero.getY()+y) instanceof Monster){
+			Dado dadoHeroi = new Dado();
+			ArrayList<Integer> dados =dadoHeroi.rolarDadoAttack(hero.getAttackDices());
+			Monster monster = (Monster) mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement(hero.getX() + x, hero.getY() + y);
+			monster.setBody(monster.getBody()-dados.get(0)-dados.get(2));
+			if(monster.getBody()<=0){
+				Empty vasio =new Empty(hero.getX()+x,hero.getY()+y);
+				mapa.map[hero.getSalaY()][hero.getSalaX()].setMapElement(hero.getX()+x,hero.getY()+y,vasio);
+			}else{
+				mapa.map[hero.getSalaX()][hero.getSalaY()].setMapElement(hero.getX()+x,hero.getY()+y,monster);
+			}
+		}else{
+			System.out.println("ops isso nao eh um mostro");
+		}
+	}
 
-	public void lansarMagia(int x, int y){
+	public void lansarMagia(int x, int y, Magia m){
 		if(x==0 && y==1){
+			for(int i=hero.getY();i>=0;i--){
+				if(mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement( hero.getX(), i) instanceof Monster){
+					Monster monster = (Monster) mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement( hero.getX(), i);
+					Dado dadoHeroi = new Dado();
+					int dado=dadoHeroi.rolarDado();
+					if(dado<hero.getIntelligence()){
+						if(m instanceof MagicMissile){
+							monster.setBody(monster.getBody()-6);
+						}
+						if(monster.getBody()<=0){
+							Empty vasio =new Empty(hero.getX(), i);
+							mapa.map[hero.getSalaY()][hero.getSalaX()].setMapElement(hero.getX(), i,vasio);
+						}else{
+							mapa.map[hero.getSalaX()][hero.getSalaY()].setMapElement(hero.getX(), i,monster);
+						}
+					}
+
+				}
+			}
 		}else if(x==0 && y==-1){
+			for(int i=hero.getY();i<mapa.map[hero.getSalaX()][hero.getSalaY()].getY();i++){
+				if(mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement( hero.getX(), i) instanceof Monster){
+					Monster monster = (Monster) mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement( hero.getX(), i);
+					Dado dadoHeroi = new Dado();
+					int dado=dadoHeroi.rolarDado();
+					if(dado<hero.getIntelligence()){
+						if(m instanceof MagicMissile){
+							monster.setBody(monster.getBody()-6);
+						}
+						if(monster.getBody()<=0){
+							Empty vasio =new Empty(hero.getX(), i);
+							mapa.map[hero.getSalaY()][hero.getSalaX()].setMapElement(hero.getX(), i,vasio);
+						}else{
+							mapa.map[hero.getSalaX()][hero.getSalaY()].setMapElement(hero.getX(), i,monster);
+						}
+					}
+
+				}
+			}
 		}else if(x==1 && y==0){
+			for(int i=hero.getX();i<mapa.map[hero.getSalaX()][hero.getSalaY()].getX();i++){
+				if(mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement( i, hero.getY()) instanceof Monster){
+					Monster monster = (Monster) mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement( i, hero.getY());
+					Dado dadoHeroi = new Dado();
+					int dado=dadoHeroi.rolarDado();
+					if(dado<hero.getIntelligence()){
+						if(m instanceof MagicMissile){
+							monster.setBody(monster.getBody()-6);
+						}
+						if(monster.getBody()<=0){
+							Empty vasio =new Empty(i,hero.getY());
+							mapa.map[hero.getSalaY()][hero.getSalaX()].setMapElement(i,hero.getY(),vasio);
+						}else{
+							mapa.map[hero.getSalaX()][hero.getSalaY()].setMapElement(i,hero.getY(),monster);
+						}
+					}
+
+				}
+			}
 		}else if(x==-1 && y==0){
+			for(int i=hero.getX();i>=0;i--){
+				if(mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement( i, hero.getY()) instanceof Monster){
+					Monster monster = (Monster) mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement( i, hero.getY());
+					Dado dadoHeroi = new Dado();
+					int dado=dadoHeroi.rolarDado();
+					if(dado<hero.getIntelligence()){
+						if(m instanceof MagicMissile){
+							monster.setBody(monster.getBody()-6);
+						}
+						if(monster.getBody()<=0){
+							Empty vasio =new Empty(i,hero.getY());
+							mapa.map[hero.getSalaY()][hero.getSalaX()].setMapElement(i,hero.getY(),vasio);
+						}else{
+							mapa.map[hero.getSalaX()][hero.getSalaY()].setMapElement(i,hero.getY(),monster);
+						}
+					}
+
+				}
+			}
 		}
 	}
 
