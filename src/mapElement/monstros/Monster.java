@@ -25,5 +25,9 @@ public class Monster extends MapElement{
 		this.armas = armas;
 	}
 	
+	public int getHP() {
+		return this.body;
+	}
+	
 
 }

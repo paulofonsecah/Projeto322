@@ -17,9 +17,9 @@ public class Heroi extends MapElement {
 	protected int body;
 	protected int fullHands; //0-3
 	
-	public ArrayList<Armas> armas;
-	public ArrayList<Armor> armaduras; //MAX 2 COMO SETAR?
-	public ArrayList<Potions> pocoes;
+	protected ArrayList<Armas> armas;
+	protected ArrayList<Armor> armaduras; //MAX 2 COMO SETAR?
+	protected ArrayList<Potions> pocoes;
 	
 	public ArrayList<Item> bolsa;
 	
@@ -63,22 +63,36 @@ public class Heroi extends MapElement {
 	public int getFullHands() {
 		return this.fullHands;
 	}
-	
-	
+
+	public int getHP() {
+		return this.body;
+	}
+
+	public int getAttackDices() {
+		return this.attack;
+	}
+
+	public int getDeffensDices() {
+		return this.deffense;
+	}
+
+	public int getIntelligence() {
+		return this.mind;
+	}
 	public void increaseBodyPoints (int cura) {
 		this.body=this.body+cura;		
 	}
 	
 	public void increaseAttackDices (int fortalece) {
-		this.body=this.body+fortalece;		
+		this.attack=this.attack+fortalece;		
 	}
 	
 	public void increaseDeffenseDices (int protege) {
-		this.body=this.body+protege;		
+		this.deffense=this.deffense+protege;		
 	}
 	
 	public void increaseMindPoints (int ensina) {
-		this.body=this.body+ensina;		
+		this.mind=this.mind+ensina;		
 	}
 	
 	//Bebe Poçôes
