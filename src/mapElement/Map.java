@@ -1,9 +1,9 @@
- package game;
+ package mapElement;
 import java.util.ArrayList;
 import java.util.Random;
 
-import mapElement.Trap;
-import mapElement.Treasures;
+
+import mapElement.herois.Heroi;
 import mapElement.monstros.Monster;
 
 
@@ -72,13 +72,7 @@ public class Map {
 			int indice = random.nextInt(this.salas.size()-1);
 			this.salas.get(indice).setTesouros(t.get(i));
 		}
-
-		for(int i = 0; i < m.size();i++) {
-			int indice = random.nextInt(this.salas.size()-1);
-			this.salas.get(indice).setMonstros(m.get(i));
-		}
-
-
+		
 	}
 	
 	public void createMap(){
@@ -94,21 +88,28 @@ public class Map {
 			for (int k = 0; k<this.map[i][0].getX(); k++){
 				for (int j = 0; j<this.y; j++){
 					if(map[i][j] != null) {
-<<<<<<< HEAD:src/game/Map.java
 						boolean s = false;
 						if(k == this.map[i][0].getX()-1) {
 							s = true;
 						}
-						this.map[i][j].imprime(k,s);
-=======
-						this.map[i][j].imprime(k);
->>>>>>> b923e0a75d426f298e4c26b9393b56a41675a335:src/Map.java
-						System.out.print("|");
+						if(i+1< this.x) {
+							this.map[i][j].imprime(k,s,this.map[i+1][j]);	
+						}else {
+							this.map[i][j].imprime(k,s,null);		
+						}
+					
+						if(this.map[i][j].getRoom()[k][this.map[i][j].getY()-1] instanceof Door  && j+1< this.y && this.map[i][j+1].getRoom()[k][0] instanceof Door ) {
+							System.out.print(" ");	
+						}else {
+							System.out.print("|");
+						}
+						
 					}
 				}
 				System.out.println("");
 			}
 		}
 	}
+
 
 }

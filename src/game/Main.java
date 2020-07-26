@@ -4,10 +4,15 @@ import mapasDefaut.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Itens.Armas;
+import Itens.Armor;
+import Itens.potions.Potions;
+import mapElement.Map;
+import mapElement.herois.Heroi;
+
 public class Main {
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Map mapa1  =new Map(4,4);
 		final Mapa2 mapas = new Mapa2();
 	
@@ -16,7 +21,7 @@ public class Main {
 		ArrayList<Armor> a = new ArrayList<Armor>();
 		ArrayList<Potions> p = new ArrayList<Potions>();
 		
-		Heroi hero = new Heroi(w, a, p, 's', 1, 2, 3, 4,3,3,1,1); //Posi��o inicial do Heroi: (3,3) na sala (1,1)
+		Heroi hero = new Heroi(w, a, p,1,1,3,3); //Posi��o inicial do Heroi: (3,3) na sala (1,1)
 		mapa1 = mapas.criarMapa(mapa1,hero);	
 		mapa1.imprimeMap(); 
 		//mapa1.imprimeMap();

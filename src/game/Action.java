@@ -1,3 +1,5 @@
+package game;
+
 import mapElement.Empty;
 import mapElement.Map;
 import mapElement.herois.Heroi;

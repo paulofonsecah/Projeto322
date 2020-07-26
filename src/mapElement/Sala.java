@@ -1,13 +1,10 @@
-package game;
+package mapElement;
 import java.util.ArrayList;
 import java.util.Random;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 import com.sun.xml.internal.ws.util.StringUtils;
 
-import mapElement.MapElement;
-import mapElement.Trap;
-import mapElement.Treasures;
 import mapElement.herois.Heroi;
 import mapElement.monstros.Monster;
 
@@ -28,6 +25,16 @@ public class Sala {
 	public MapElement room[][];
 	
 	
+	public MapElement[][] getRoom() {
+		return room;
+	}
+
+
+	public void setRoom(MapElement[][] room) {
+		this.room = room;
+	}
+
+
 	public Sala (ArrayList<Door> p, int tx, int ty, int px, int py) {
 		setPortas(p);
 		x = tx;
@@ -200,21 +207,21 @@ public class Sala {
 			if(this.room[this.monstros.get(i).getX()][this.monstros.get(i).getY()] instanceof Empty){
 				this.room[this.monstros.get(i).getX()][this.monstros.get(i).getY()] = this.monstros.get(i);
 			}else {
-				System.out.println("Já existe algo nesta posição, este monstro não foi adicionado!");
+				System.out.println("JÃ¡ existe algo nesta posiÃ§Ã£o, este monstro nÃ£o foi adicionado!");
 			}
 		}
 		for(int i  = 0; i < this.armadilhas.size(); i++) {
 			if(this.room[this.armadilhas.get(i).getX()][this.armadilhas.get(i).getY()] instanceof Empty){
 				this.room[this.armadilhas.get(i).getX()][this.armadilhas.get(i).getY()] = this.armadilhas.get(i);
 			}else {
-				System.out.println("Já existe algo nesta posição, esta armadilha não foi adicionada!");
+				System.out.println("JÃ¡ existe algo nesta posiÃ§Ã£o, esta armadilha nÃ£o foi adicionada!");
 			}
 		}
 		for(int i  = 0; i < this.tesouros.size(); i++) {
 			if(this.room[this.tesouros.get(i).getX()][this.tesouros.get(i).getY()] instanceof Empty){
 				this.room[this.tesouros.get(i).getX()][this.tesouros.get(i).getY()] = this.tesouros.get(i);
 			}else {
-				System.out.println("Já existe algo nesta posição, este tesouro não foi adicionado!");
+				System.out.println("JÃ¡ existe algo nesta posiÃ§Ã£o, este tesouro nÃ£o foi adicionado!");
 			}
 			
 		}
@@ -222,6 +229,9 @@ public class Sala {
 	
 	public void addnulo(int x, int y) {
 		this.room[x][y] = new Nulo(x,y);
+	}
+	public void addHero(Heroi hero) {
+		this.room[hero.getX()][hero.getY()] =hero;
 	}
 	
 	public void imprime() {
@@ -239,38 +249,53 @@ public class Sala {
 					System.out.print("P");
 				}else if(this.room[i][j] instanceof Nulo) {
 					System.out.print("X");
-				}else if(this.room[i][j] instanceof Heroi) {
-					System.out.print("H");
 				}
 			}
 			System.out.println();
 		}
 	}
-<<<<<<< HEAD:src/game/Sala.java
-	public void imprime(int k, boolean s) {
-=======
-	public void imprime(int k) {
->>>>>>> b923e0a75d426f298e4c26b9393b56a41675a335:src/Sala.java
+	public void imprime(int k, boolean s,Sala sala) {
 		for (int j = 0; j < this.y; j++){
 			if(k<this.x) {
 				if(this.room[k][j] instanceof Empty) {
-					System.out.print("*");
+					if (s) {
+						System.out.print("VÍŸ");
+					}else {
+						System.out.print("V");
+					}
 				}else if(this.room[k][j] instanceof Monster) {
-					System.out.print("M");
+					if (s) {
+						System.out.print("MÍŸ");
+					}else {
+						System.out.print("M");
+					}
 				}else if(this.room[k][j] instanceof Trap) {
-					System.out.print("A");
+					if (s) {
+						System.out.print("AÍŸ");
+					}else {
+						System.out.print("A");
+					}
 				}else if(this.room[k][j] instanceof Treasures) {
-					System.out.print("T");
+					if (s) {
+						System.out.print("TÍŸ");
+					}else {
+						System.out.print("T");
+					}
 				}else if(this.room[k][j] instanceof Door) {
-					System.out.print("*");
+					if (s && sala!=null && !(sala.getRoom()[0][j] instanceof Door)) {
+						System.out.print("*ÍŸ");
+					}else {
+						System.out.print("*");
+					}
 				}else if(this.room[k][j] instanceof Nulo) {
 					System.out.print("X");
-<<<<<<< HEAD:src/game/Sala.java
-=======
 				}else if(this.room[k][j] instanceof Heroi) {
-					System.out.print("H");
->>>>>>> b923e0a75d426f298e4c26b9393b56a41675a335:src/Sala.java
-				}	
+					if (s) {
+						System.out.print("HÍŸ");
+					}else {
+						System.out.print("H");
+					}
+				}
 			}else {
 				System.out.print("X");
 				

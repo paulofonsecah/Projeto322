@@ -1,19 +1,31 @@
 package mapasDefaut;
 import game.*;
-
+import mapElement.Corredor;
+import mapElement.Door;
+import mapElement.Map;
+import mapElement.Sala;
+import mapElement.Trap;
+import mapElement.Treasures;
+import mapElement.herois.Heroi;
+import mapElement.monstros.Monster;
 
 import java.util.ArrayList;
 
+import Itens.Armas;
+import Itens.Item;
+
 public class Mapa1 {
 	
-	public void criarMapa(Map map) {
-		final Monster m = new Monster(2,2);
-		final Monster m2 = new Monster(3,2);
-		final Monster m3 = new Monster(1,2);
+	public void criarMapa(Map map, Heroi hero) {
+		ArrayList<Armas> ar = new ArrayList<Armas>(); 
+		final Monster m = new Monster(ar,2,2);
+		final Monster m2 = new Monster(ar,3,2);
+		final Monster m3 = new Monster(ar,1,2);
 		final Trap a = new Trap(3,3);
 		final Trap a2 = new Trap(2,3);
-		final Treasures t = new Treasures(0,1);
-		final Treasures t2 = new Treasures(1,1);
+		ArrayList<Item> items = new ArrayList<Item>(); 
+		final Treasures t = new Treasures(items,0,1);
+		final Treasures t2 = new Treasures(items,1,1);
 		final Door d = new Door (2,0);
 		final Door d2 = new Door (0,2);
 		final Door d3 = new Door (2,4);
@@ -124,14 +136,13 @@ public class Mapa1 {
 		map.createRooms(corredor7);
 		map.createRooms(corredor8);
 		
-		
-		
-		
+
 		
 		map.randomMap(mA, aA, tA);
 		
 		
 		map.createMap();
+		map.map[1][1].room[3][3] = hero;
 		map.imprimeMap();
 		//room.imprime();
 	}
