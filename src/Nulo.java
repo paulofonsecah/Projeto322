@@ -1,3 +1,4 @@
+import mapElement.MapElement;
 
 public class Nulo extends MapElement{
 	

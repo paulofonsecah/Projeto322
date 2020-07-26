@@ -4,6 +4,12 @@ import java.util.Random;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 import com.sun.xml.internal.ws.util.StringUtils;
 
+import mapElement.MapElement;
+import mapElement.Trap;
+import mapElement.Treasures;
+import mapElement.herois.Heroi;
+import mapElement.monstros.Monster;
+
 public class Sala {
 	
 	//Elementos da sala

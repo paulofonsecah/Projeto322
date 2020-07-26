@@ -1,6 +1,10 @@
 
 import java.util.ArrayList;
 
+import mapElement.Trap;
+import mapElement.Treasures;
+import mapElement.monstros.Monster;
+
 public class Mapa2 {
 	
 	public Map criarMapa(Map map) {

@@ -3,6 +3,11 @@
 
 import java.util.ArrayList;
 
+import mapElement.Trap;
+import mapElement.Treasures;
+import mapElement.herois.Heroi;
+import mapElement.monstros.Monster;
+
 public class Mapa1 {
 	
 	public void criarMapa(Map map) {

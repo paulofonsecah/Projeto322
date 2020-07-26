@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import mapElement.Trap;
+import mapElement.Treasures;
+import mapElement.monstros.Monster;
+
 
 public class Map {
 	
