@@ -2,6 +2,7 @@ package mapasDefaut;
 import game.*;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Itens.Armas;
@@ -17,13 +18,13 @@ import mapElement.monstros.Monster;
 
 public class Mapa2 {
 	
-	public Map criarMapa(Map map, Heroi hero) {
+	public Map criarMapa(Map map, Heroi hero) throws IOException {
 		
 		ArrayList<Armas> armas = new ArrayList<Armas>(); 
 		
-		final Monster m = new Monster(armas,2,2);
-		final Monster m2 = new Monster(armas,3,2);
-		final Monster m3 = new Monster(armas,1,1);
+		final Monster m = new Monster(armas,2,2,3);
+		final Monster m2 = new Monster(armas,3,2,3);
+		final Monster m3 = new Monster(armas,1,1,3);
 		final Trap a = new Trap(3,3);
 		final Trap a2 = new Trap(3,0);
 		
@@ -141,9 +142,12 @@ public class Mapa2 {
 		map.map[1][1].room[3][3] = hero;
 		
 		map.imprimeMap();
+
+		map.map[hero.getSalaX()][hero.getSalaY()].setHero(hero);
+		map.imprimeMap();
+		return map;
 		//room.imprime();
 		
-		return map;
 	}
 
 }

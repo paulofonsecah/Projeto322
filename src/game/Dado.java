@@ -1,4 +1,6 @@
 package game;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Arrays;
@@ -37,7 +39,7 @@ public class Dado {
 		int dadoNum = 0;
 		for(i=1;i<=n;i++){
 			aleatNum = ThreadLocalRandom.current().nextInt(1, 7);
-			System.out.printf("Voc� rolou um dado e obteu %d!\n", aleatNum);	
+			System.out.printf("Voc� rolou um dado e obteu %d!\n", aleatNum);
 			dadoNum += aleatNum;
 //			if(aleatNum == 2 || aleatNum == 3 || aleatNum == 5) dadoNum[i-1] = 0; //0 = caveira
 //			else if(aleatNum == 4 || aleatNum == 6) dadoNum[i-1] = 1; //1 = escudo heroi
@@ -46,6 +48,27 @@ public class Dado {
 		System.out.printf("Valor total dos dados: %d\n", dadoNum);
 		return dadoNum;
 		}
+
+	public ArrayList<Integer>  rolarDadoAttack(int numVezes) {
+		int i, aleatNum, n;
+		n = numVezes;
+		ArrayList<Integer> dados = new ArrayList<Integer>();
+		dados.add(0);
+		dados.add(0);
+		dados.add(0);
+		for(i=1;i<=n;i++){
+			aleatNum = ThreadLocalRandom.current().nextInt(1, 7);
+			System.out.printf("Voc� rolou um dado e obteu %d!\n", aleatNum);
+			if(aleatNum==1 || aleatNum==2 || aleatNum==3 ){
+				dados.set(0,dados.get(0)+1);
+			}else if(aleatNum==4 ||aleatNum==5){
+				dados.set(1,dados.get(1)+1);
+			}else if(aleatNum==6){
+				dados.set(2,dados.get(2)+1);
+			}
+		}
+		return dados;
+	}
    
 	
 	public int getNumFaces() {

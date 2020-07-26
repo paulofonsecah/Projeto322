@@ -1,4 +1,5 @@
  package mapElement;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -83,7 +84,8 @@ public class Map {
 	}
 	
 	
-	public void imprimeMap() {
+	public void imprimeMap() throws IOException {
+		System.out.print("\033[H\033[2J");
 		for (int i = 0; i < this.x; i++){
 			for (int k = 0; k<this.map[i][0].getX(); k++){
 				for (int j = 0; j<this.y; j++){

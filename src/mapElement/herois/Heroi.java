@@ -43,14 +43,15 @@ public class Heroi extends MapElement {
 	
 	public int Sala;
 	
-	public Heroi(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p,  int px, int py,int sx,int sy) { //COORDENADAS?? ArrayList<Armas> w, ArrayList<Armor> a,
+	public Heroi(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p,int sx,int sy,int px, int py) { //COORDENADAS?? ArrayList<Armas> w, ArrayList<Armor> a,
 		super(px,py);	
 		this.name="H";
 		salaX = sx;
-		salaY = sx;
+		salaY = sy;
 		armas=w;
 		armaduras=a;
 		pocoes=p;
+		attack=3;
 	}
 	
 	public void mudarNome (String nome) {

@@ -9,6 +9,7 @@ import mapElement.Treasures;
 import mapElement.herois.Heroi;
 import mapElement.monstros.Monster;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Itens.Armas;
@@ -16,11 +17,11 @@ import Itens.Item;
 
 public class Mapa1 {
 	
-	public void criarMapa(Map map, Heroi hero) {
+	public Map criarMapa(Map map, Heroi hero) throws IOException {
 		ArrayList<Armas> ar = new ArrayList<Armas>(); 
-		final Monster m = new Monster(ar,2,2);
-		final Monster m2 = new Monster(ar,3,2);
-		final Monster m3 = new Monster(ar,1,2);
+		final Monster m = new Monster(ar,2,2,3);
+		final Monster m2 = new Monster(ar,3,2,3);
+		final Monster m3 = new Monster(ar,1,2,3);
 		final Trap a = new Trap(3,3);
 		final Trap a2 = new Trap(2,3);
 		ArrayList<Item> items = new ArrayList<Item>(); 
@@ -142,8 +143,10 @@ public class Mapa1 {
 		
 		
 		map.createMap();
-		map.map[1][1].room[3][3] = hero;
+
+		map.map[hero.getSalaX()][hero.getSalaY()].setHero(hero);
 		map.imprimeMap();
+		return map;
 		//room.imprime();
 	}
 

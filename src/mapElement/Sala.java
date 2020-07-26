@@ -15,6 +15,21 @@ public class Sala {
 	private ArrayList<Trap> armadilhas;
 	private ArrayList<Treasures> tesouros;
 	private ArrayList<Door> portas;
+	private Heroi hero;
+
+	public Heroi getHero() {
+		return hero;
+	}
+
+	public void setHero(Heroi hero) {
+		this.hero = hero;
+	}
+
+	public void mosterDie(int x, int y) {
+		this.hero = hero;
+	}
+
+
 	//Tamanho da sala
 	private int x;
 	private int y;
@@ -27,6 +42,13 @@ public class Sala {
 	
 	public MapElement[][] getRoom() {
 		return room;
+	}
+
+	public MapElement getMapElement(int x, int y) {
+		return room[x][y];
+	}
+	public void setMapElement(int x, int y,MapElement change) {
+		room[x][y]=change;
 	}
 
 
@@ -45,6 +67,7 @@ public class Sala {
 		monstros = new ArrayList<Monster>();
 		armadilhas = new ArrayList<Trap>();
 		tesouros = new ArrayList<Treasures>();
+		hero= null;
 	}
 	
 	
@@ -227,13 +250,7 @@ public class Sala {
 		}
 	}
 	
-	public void addnulo(int x, int y) {
-		this.room[x][y] = new Nulo(x,y);
-	}
-	public void addHero(Heroi hero) {
-		this.room[hero.getX()][hero.getY()] =hero;
-	}
-	
+
 	public void imprime() {
 		for (int i = 0; i < this.x; i++){
 			for (int j = 0; j<this.y; j++){
@@ -256,7 +273,13 @@ public class Sala {
 	}
 	public void imprime(int k, boolean s,Sala sala) {
 		for (int j = 0; j < this.y; j++){
-			if(k<this.x) {
+			if(hero!=null && k==hero.getX() && j== hero.getY()){
+				if (s) {
+					System.out.print("H͟");
+				}else {
+					System.out.print("H");
+				}
+			}else{
 				if(this.room[k][j] instanceof Empty) {
 					if (s) {
 						System.out.print("V͟");
@@ -289,18 +312,10 @@ public class Sala {
 					}
 				}else if(this.room[k][j] instanceof Nulo) {
 					System.out.print("X");
-				}else if(this.room[k][j] instanceof Heroi) {
-					if (s) {
-						System.out.print("H͟");
-					}else {
-						System.out.print("H");
-					}
 				}
-			}else {
-				System.out.print("X");
-				
 			}
-			
+
+
 		}
 	}
 	
