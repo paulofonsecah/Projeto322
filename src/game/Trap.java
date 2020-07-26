@@ -1,5 +1,6 @@
 package game;
 
+
 public class Trap extends MapElement{
 	
 	public Trap(int x, int y) {

@@ -1,5 +1,6 @@
 package game;
 
+
 public class Treasures extends MapElement{
 	
 	public Treasures(int x, int y) {

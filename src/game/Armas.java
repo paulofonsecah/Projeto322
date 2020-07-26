@@ -5,7 +5,6 @@ public class Armas extends MapElement{
 	private int bonus;
 	private boolean ehdestruida;
 	
-	//Valeska passou por aqui
 	public Armas(int a, int b, boolean d, int x, int y) {
 		super(x,y);
 		alcance = a;

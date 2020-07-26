@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Mapa2 {
 	
-	public void criarMapa(Map map) {
+	public Map criarMapa(Map map, Heroi hero) {
 		final Monster m = new Monster(2,2);
 		final Monster m2 = new Monster(3,2);
 		final Monster m3 = new Monster(1,1);
@@ -92,6 +92,7 @@ public class Mapa2 {
 		corredor7.setArmadilhas(a2);
 		final Corredor corredor8 = new Corredor(dcorredor2, 5,1, 2, 3);
 		
+		
 		//room.createRoom();
 		//ArrayList<Sala> sA = new ArrayList<Sala>();
 		//sA.add(room);
@@ -115,9 +116,14 @@ public class Mapa2 {
 		map.createRooms(corredor8);
 		
 		
+		map.addHero(hero);
+		
+		
 		map.createMap();
 		map.imprimeMap();
 		//room.imprime();
+		
+		return map;
 	}
 
 }

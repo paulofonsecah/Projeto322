@@ -19,11 +19,11 @@ public class Mapa1 {
 		final Door d3 = new Door (2,4);
 		final Door d4 = new Door (4,2);
 		
-		final Door dc1 = new Door (1,0);
-		final Door dc2 = new Door (0,1);
+		final Door dc1 = new Door (0,0);
+		//final Door dc2 = new Door (0,1);
 		
 		final Door dc3 = new Door (0,0);
-		final Door dc4 = new Door (1,1);
+		//final Door dc4 = new Door (1,1);
 		
 		
 		final Door dc5 = new Door (0,0);
@@ -46,11 +46,11 @@ public class Mapa1 {
 		
 		ArrayList<Door> dcanto1e3 = new ArrayList<Door>();
 		dcanto1e3.add(dc1);
-		dcanto1e3.add(dc2);
+		//dcanto1e3.add(dc2);
 		
 		ArrayList<Door> dcanto2e4 = new ArrayList<Door>();
 		dcanto2e4.add(dc3);
-		dcanto2e4.add(dc4);
+		//dcanto2e4.add(dc4);
 		
 		
 		//ArrayLists com todos os monstros existentes
@@ -81,16 +81,16 @@ public class Mapa1 {
 		final Sala room3 = new Sala(dA, 5,5, 1, 2);
 		final Sala room4 = new Sala(dA, 5,5, 2, 1);
 		
-		final Corredor corredorcanto1 = new Corredor(dcanto1e3, 2,2, 0, 0);
-		final Corredor corredorcanto3 = new Corredor(dcanto1e3, 2,2, 3, 3);
-		final Corredor corredorcanto2 = new Corredor(dcanto2e4, 2,2, 0, 3);
-		final Corredor corredorcanto4 = new Corredor(dcanto2e4, 2,2, 3, 0);
+		final Corredor corredorcanto1 = new Corredor(dcanto1e3, 1,1, 0, 0);
+		final Corredor corredorcanto3 = new Corredor(dcanto1e3, 1,1, 3, 3);
+		final Corredor corredorcanto2 = new Corredor(dcanto2e4, 1,1, 0, 3);
+		final Corredor corredorcanto4 = new Corredor(dcanto2e4, 1,1, 3, 0);
 		
 		
-		corredorcanto1.addnulo(1, 1);
-		corredorcanto2.addnulo(1, 0);
-		corredorcanto3.addnulo(0, 0);
-		corredorcanto4.addnulo(0, 1);
+		//corredorcanto1.addnulo(1, 1);
+		//corredorcanto2.addnulo(1, 0);
+		//corredorcanto3.addnulo(0, 0);
+		//corredorcanto4.addnulo(0, 1);
 		
 		final Corredor corredor1 = new Corredor(dcorredor1, 1,5, 0, 1);
 		final Corredor corredor2 = new Corredor(dcorredor1, 1,5, 0, 2);
@@ -99,8 +99,8 @@ public class Mapa1 {
 		
 		final Corredor corredor5 = new Corredor(dcorredor2, 5,1, 1, 0);
 		final Corredor corredor6 = new Corredor(dcorredor2, 5,1, 2, 0);
-		final Corredor corredor7 = new Corredor(dcorredor2, 5,1, 3, 1);
-		final Corredor corredor8 = new Corredor(dcorredor2, 5,1, 3, 2);
+		final Corredor corredor7 = new Corredor(dcorredor2, 5,1, 1, 3);
+		final Corredor corredor8 = new Corredor(dcorredor2, 5,1, 2, 3);
 		
 		//room.createRoom();
 		//ArrayList<Sala> sA = new ArrayList<Sala>();
