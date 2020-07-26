@@ -7,8 +7,8 @@ public class Main {
 		Map mapa1  =new Map(4,4);
 		final Mapa2 mapas = new Mapa2();
 		mapa1 = mapas.criarMapa(mapa1);
-		Heroi hero = new Heroi(3,3,1,1); //Posição inicial do Heroi: (3,3) na sala (1,1)
-		mapa1.map[1][1].room[3][3] = hero;
+		Heroi hero = new Heroi(3,3,1,2); //Posição inicial do Heroi: (3,3) na sala (1,1)
+		mapa1.map[2][1].room[3][3] = hero;
 		mapa1.imprimeMap(); 
 		//mapa1.imprimeMap();
 		Scanner keyboard = new Scanner ( System .in);
