@@ -1,6 +1,6 @@
-package Itens.potions;
+package itens.potions;
 
-import Itens.Item;
+import itens.Item;
 import mapElement.herois.Heroi;
 
 public interface Potions extends Item {

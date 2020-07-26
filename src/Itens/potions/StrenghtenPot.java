@@ -1,4 +1,4 @@
-package Itens.potions;
+package itens.potions;
 
 import mapElement.herois.Heroi;
 

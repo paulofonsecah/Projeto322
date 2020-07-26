@@ -3,15 +3,16 @@ package mapElement.herois;
 
 import java.util.ArrayList;
 
-import Itens.Armas;
-import Itens.Armor;
+import itens.Armor;
+import itens.armas.Armas;
 import itens.potions.Potions;
+import itens.magias.*;
 
 public class Feiticeiro extends Heroi{
 	
-	public ArrayList<Magias> magia;
+	public ArrayList<Magia> magias;
 	
-	public Feiticeiro(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p, ArrayList<Magias> m, int px, int py) {
+	public Feiticeiro(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p, ArrayList<Magia> m, int px, int py) {
 		
 		super(w, a, p , px, py);
 		
@@ -21,19 +22,31 @@ public class Feiticeiro extends Heroi{
 		this.mind=6;
 		this.body=4;
 		
-		magia= m;
+		magias= m;
 		armas=w;
 		armaduras=a;
 		pocoes=p;
 	}
 
-	public ArrayList<Magias> getMagias(){
-	return magia;
+	public ArrayList<Magia> getMagias(){
+	return magias;
 	}
 	
-	public void setMagias(ArrayList<Magias> magia) {
-		this.magia=magia;	
+	public void setMagias(ArrayList<Magia> magia) {
+		this.magias=magia;	
 
+	}
+	
+	public void castSpell (Magia magia) {
+		boolean status=false;	
+		for( Magia o : this.magias ) {
+			if(o.getClass()==magia.getClass()) {
+				status=true;
+			}
+		}
+		if(status) {
+			magia.ehUsada(this);
+		}
 	}
 
 }

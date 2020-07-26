@@ -1,4 +1,4 @@
-package Itens;
+package itens;
 
 public interface Item {
 

@@ -1,23 +1,24 @@
 package mapElement.herois;
 
-
 import java.util.ArrayList;
 
-import Itens.*;
-import Itens.potions.*;
-import mapElement.MapElement;
 
-public class Heroi extends MapElement {
+import itens.Armor;
+import itens.Item;
+import itens.armas.Armas;
+import itens.potions.Potions;
+import mapElement.*;
+
+public class Heroi extends Personagem {
 	
 	public String name;
 
-	protected int attack;
+
 	protected int deffense;
 	protected int mind;
-	protected int body;
-	protected int fullHands; //0-3
+	protected int freeHands; //0-2
 	
-	protected ArrayList<Armas> armas;
+	
 	protected ArrayList<Armor> armaduras; //MAX 2 COMO SETAR?
 	protected ArrayList<Potions> pocoes;
 	
@@ -40,13 +41,6 @@ public class Heroi extends MapElement {
 		this.name=nome;
 	} 
 	
-	public ArrayList<Armas> getArmas(){
-		return armas;
-	}	
-		
-	public void setArmas(ArrayList<Armas> armas) { 
-		this.armas = armas;
-	}
 	
 	public ArrayList<Armor> getArmor(){
 		return armaduras;
@@ -60,13 +54,21 @@ public class Heroi extends MapElement {
 		return pocoes;
 	}
 	
+	public void usarArma(int posBolsa) {
+		Armas armaUsar = (Armas)this.bolsa.get(posBolsa); 
+		if(this.freeHands - armaUsar.ocupaMaos>=0) {
+			this.armas.add(armaUsar);
+			this.freeHands =- armaUsar.ocupaMaos;
+			this.bolsa.remove(posBolsa);
+		}
+	}
+	
 	public int getFullHands() {
-		return this.fullHands;
+		return this.freeHands;
 	}
+	
+	public void releaseHands() {}
 
-	public int getHP() {
-		return this.body;
-	}
 
 	public int getAttackDices() {
 		return this.attack;
@@ -79,9 +81,7 @@ public class Heroi extends MapElement {
 	public int getIntelligence() {
 		return this.mind;
 	}
-	public void increaseBodyPoints (int cura) {
-		this.body=this.body+cura;		
-	}
+
 	
 	public void increaseAttackDices (int fortalece) {
 		this.attack=this.attack+fortalece;		
@@ -94,6 +94,19 @@ public class Heroi extends MapElement {
 	public void increaseMindPoints (int ensina) {
 		this.mind=this.mind+ensina;		
 	}
+
+	public void decreaseAttackDices (int enfraquece) {
+		this.attack=this.attack-enfraquece;		
+	}
+
+	public void decreaseDeffenseDices (int dano) {
+		this.deffense=this.deffense-dano;		
+	}
+	
+	public void decreaseMindPoints (int dano) {
+		this.mind=this.mind-dano;		
+	}
+	
 	
 	//Bebe Poçôes
 	public void setPotions(ArrayList<Potions> pocoes) {

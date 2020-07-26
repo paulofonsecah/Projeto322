@@ -1,6 +1,7 @@
 package mapElement;
-import Itens.Item;
 import java.util.ArrayList;
+
+import itens.Item;
 
 public class Treasures extends MapElement{
 	
