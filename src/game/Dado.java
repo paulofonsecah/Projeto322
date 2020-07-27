@@ -40,7 +40,7 @@ public class Dado {
 		int dadoNum = 0;
 		for(i=1;i<=n;i++){
 			aleatNum = ThreadLocalRandom.current().nextInt(1, numFaces+1);
-			System.out.printf("Voce rolou um dado e obteu %d!\n", aleatNum);
+			System.out.printf("Voce rolou um dado e obteve %d!\n", aleatNum);
 			dadoNum += aleatNum;
 //			if(aleatNum == 2 || aleatNum == 3 || aleatNum == 5) dadoNum[i-1] = 0; //0 = caveira
 //			else if(aleatNum == 4 || aleatNum == 6) dadoNum[i-1] = 1; //1 = escudo heroi
@@ -53,6 +53,7 @@ public class Dado {
 	public int rolarDado() {
 		int i, aleatNum, n;
 		aleatNum = ThreadLocalRandom.current().nextInt(1, 7);
+		System.out.printf("Voce rolou um dado e obteve %d!\n", aleatNum);
 		return aleatNum;
 	}
 

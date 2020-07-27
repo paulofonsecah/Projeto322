@@ -52,11 +52,7 @@ public class Heroi extends MapElement {
 		armaduras=a;
 		pocoes=p;
 		attack=3;
-		mind=8;
-		ArrayList<Item> laaa = new ArrayList<Item>();
-		Armas lala = new Armas(1,1,true,"lala");
-		laaa.add(lala);
-		bolsa=laaa;
+		mind=3;
 
 	}
 	
