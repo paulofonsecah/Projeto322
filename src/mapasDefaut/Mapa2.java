@@ -22,9 +22,9 @@ public class Mapa2 {
 		
 		ArrayList<Armas> armas = new ArrayList<Armas>(); 
 		
-		final Monster m = new Monster(armas,2,2,3);
-		final Monster m2 = new Monster(armas,3,2,3);
-		final Monster m3 = new Monster(armas,1,1,3);
+		final Monster m = new Monster(armas, "Esqueleto", 2,2,2,2,2,6);
+		final Monster m2 = new Monster(armas, "Esqueleto", 3,2,2,2,2,6);
+		final Monster m3 = new Monster(armas, "Goblin", 1,1,3,3,2,8);
 		final Trap a = new Trap(3,3);
 		final Trap a2 = new Trap(3,0);
 		
@@ -141,7 +141,7 @@ public class Mapa2 {
 		map.createMap();
 		map.map[1][1].room[3][3] = hero;
 		
-		map.imprimeMap();
+		//map.imprimeMap();
 
 		map.map[hero.getSalaX()][hero.getSalaY()].setHero(hero);
 		map.imprimeMap();

@@ -20,11 +20,10 @@ public class Personagem extends MapElement{
 		
 	public void setArmas(ArrayList<Armas> arma) { 
 		this.armas=arma;
-	
 	}
 	
 	
-	public int getHP() {
+	public int getBody() {
 		return this.body;
 	}
 	

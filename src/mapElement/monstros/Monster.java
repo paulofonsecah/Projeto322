@@ -1,6 +1,10 @@
 package mapElement.monstros;
 
 import mapElement.*;
+=======
+import mapElement.MapElement;
+import Itens.*;
+import Itens.potions.Potions;
 
 public class Monster extends Personagem{
 
@@ -9,4 +13,12 @@ public class Monster extends Personagem{
 		super(x,y);
 	}
 	
-}
+
+	public int getAttack() {
+		return this.attack;
+	}
+
+	public void setBody (int b) {
+		this.body=b;		
+	}
+}	

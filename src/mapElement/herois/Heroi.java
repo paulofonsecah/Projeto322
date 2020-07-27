@@ -13,14 +13,13 @@ public class Heroi extends Personagem {
 	
 	public String name;
 
-
 	protected int deffense;
 	protected int mind;
 	protected int freeHands; //0-2
 	
 	
-	protected ArrayList<Armor> armaduras; //MAX 2 COMO SETAR?
 	protected ArrayList<Potions> pocoes;
+	protected ArrayList<Armas> armas;
 	
 	public ArrayList<Item> bolsa;
 	
@@ -32,9 +31,8 @@ public class Heroi extends Personagem {
 		super(px,py);
 		
 		this.name="H";
-		
 	}
-	
+		
 	public void setSalaY(int salaY) {
 		this.salaY = salaY;
 	}
@@ -52,7 +50,7 @@ public class Heroi extends Personagem {
 	}
 
 	
-	public void mudarNome (String nome) {
+	public void setNome (String nome) {
 		this.name=nome;
 	} 
 	
@@ -80,34 +78,41 @@ public class Heroi extends Personagem {
 	
 	public int getFreeHands() {
 		return this.freeHands;
-	}
-	
-	public void releaseHands() {}
 
 
-	public int getAttackDices() {
+
+	public int getAttack() {
 		return this.attack;
 	}
 
-	public int getDeffensDices() {
+	public int getDeffense() {
 		return this.deffense;
 	}
 
-	public int getIntelligence() {
+	public int getMind() {
 		return this.mind;
 	}
+	
 
-	
-	public void increaseAttackDices (int fortalece) {
-		this.attack=this.attack+fortalece;		
+	public void increaseBodyPoints (int b) {
+		this.body+=b;
 	}
 	
-	public void increaseDeffenseDices (int protege) {
-		this.deffense=this.deffense+protege;		
+	public void increaseAttackDices (int b) {
+		this.attack+=b;
+
+	}
+	public void increaseMindPoints (int b) {
+		this.mind+=b;
+	}
+
+
+	public void setAttack (int at) {
+		this.attack=at;		
 	}
 	
-	public void increaseMindPoints (int ensina) {
-		this.mind=this.mind+ensina;		
+	public void setDeffense (int def) {
+		this.deffense=def;		
 	}
 
 	public void decreaseAttackDices (int enfraquece) {
@@ -123,7 +128,6 @@ public class Heroi extends Personagem {
 	}
 	
 	
-	//Bebe Poçôes
 	public void setPotions(ArrayList<Potions> pocoes) {
 		this.pocoes=pocoes;	
 	}

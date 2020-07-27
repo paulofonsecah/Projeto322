@@ -16,6 +16,7 @@ public class EsqueletoMago extends Monster {
 		this.attack=2;		
 
 		this.magias.add(magicMissile);
+
 		
 		this.armas.add(punhos);
 	}
