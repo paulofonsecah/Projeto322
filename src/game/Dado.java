@@ -21,6 +21,7 @@ public class Dado {
 		this.numFaces = valorPadraoNumFaces;
 	}
 	
+	/*
 	public int rolarDadoMov(int numVezes) {
 		int move1 , aleatNum1, aleatNum2;
 		aleatNum1 = ThreadLocalRandom.current().nextInt(1, 7);
@@ -31,15 +32,15 @@ public class Dado {
 	    int move2 = keyboard.nextInt();
 		return move2;			
 	
-	}
+	}*/
 	
 	public int rolarDado(int numVezes) {
 		int i, aleatNum, n;
 		n = numVezes;
 		int dadoNum = 0;
 		for(i=1;i<=n;i++){
-			aleatNum = ThreadLocalRandom.current().nextInt(1, 7);
-			System.out.printf("Voc� rolou um dado e obteu %d!\n", aleatNum);
+			aleatNum = ThreadLocalRandom.current().nextInt(1, numFaces+1);
+			System.out.printf("Voce rolou um dado e obteu %d!\n", aleatNum);
 			dadoNum += aleatNum;
 //			if(aleatNum == 2 || aleatNum == 3 || aleatNum == 5) dadoNum[i-1] = 0; //0 = caveira
 //			else if(aleatNum == 4 || aleatNum == 6) dadoNum[i-1] = 1; //1 = escudo heroi
@@ -55,26 +56,44 @@ public class Dado {
 		return aleatNum;
 	}
 
-	public ArrayList<Integer>  rolarDadoAttack(int numVezes) {
-		int i, aleatNum, n;
-		n = numVezes;
-		ArrayList<Integer> dados = new ArrayList<Integer>();
-		dados.add(0);
-		dados.add(0);
-		dados.add(0);
-		for(i=1;i<=n;i++){
-			aleatNum = ThreadLocalRandom.current().nextInt(1, 7);
-			System.out.printf("Voc� rolou um dado e obteu %d!\n", aleatNum);
-			if(aleatNum==1 || aleatNum==2 || aleatNum==3 ){
-				dados.set(0,dados.get(0)+1);
-			}else if(aleatNum==4 ||aleatNum==5){
-				dados.set(1,dados.get(1)+1);
-			}else if(aleatNum==6){
-				dados.set(2,dados.get(2)+1);
+	public int rolarDadoAttack(int tipoAtk, int numVezesAtk, int numVezesDef) { //tipoAtk = 0 se heroi atacando, 1 se monstro atacando
+		int i, aleatNum;
+		int dano=0;
+		for(i=1;i<=numVezesAtk;i++){
+			aleatNum = ThreadLocalRandom.current().nextInt(1, 7);			
+			if(aleatNum == 2 || aleatNum == 3 || aleatNum == 5) {//caveira
+				dano+=1; 
+				System.out.printf("O atacante rolou um dado de caveira!\n");
+			}
+			if(aleatNum == 4 || aleatNum == 6) {//escudo heroi
+				System.out.printf("O atacante rolou um dado de escudo de heroi!\n");
+			}
+			if(aleatNum == 1) {//escudo monstro
+				System.out.printf("O atacante rolou um dado de escudo de monstro!\n");
 			}
 		}
-		return dados;
-	}
+		for(i=1;i<=numVezesDef;i++){
+			aleatNum = ThreadLocalRandom.current().nextInt(1, 7);			
+			if(aleatNum == 2 || aleatNum == 3 || aleatNum == 5) {//caveira
+				System.out.printf("O defensor rolou um dado de caveira!\n");
+			}
+			if(aleatNum == 4 || aleatNum == 6) {//escudo heroi
+				System.out.printf("O defensor rolou um dado de escudo de heroi!\n");
+				if(tipoAtk == 1) {
+					dano -= 1;
+				}
+			}
+			if(aleatNum == 1) {//escudo monstro
+				System.out.printf("O defensor rolou um dado de escudo de monstro!\n");
+				if(tipoAtk == 0) {
+					dano -= 1;
+				}
+			}
+		}
+		if (dano<0) dano = 0;
+		System.out.printf("Dano total recebido pelo defensor: %d\n", dano);
+		return dano;
+		}
    
 	
 	public int getNumFaces() {

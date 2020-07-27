@@ -18,10 +18,10 @@ import Itens.Item;
 public class Mapa1 {
 	
 	public Map criarMapa(Map map, Heroi hero) throws IOException {
-		ArrayList<Armas> ar = new ArrayList<Armas>(); 
-		final Monster m = new Monster(ar,2,2,3);
-		final Monster m2 = new Monster(ar,3,2,3);
-		final Monster m3 = new Monster(ar,1,2,3);
+		ArrayList<Armas> ar = new ArrayList<Armas>();
+		final Monster m = new Monster(ar, "Esqueleto", 2,2,2,2,2,6);
+		final Monster m2 = new Monster(ar, "Esqueleto", 3,2,2,2,2,6);
+		final Monster m3 = new Monster(ar, "Goblin", 1,1,3,3,2,8);
 		final Trap a = new Trap(3,3);
 		final Trap a2 = new Trap(2,3);
 		ArrayList<Item> items = new ArrayList<Item>(); 
