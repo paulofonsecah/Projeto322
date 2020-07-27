@@ -1,5 +1,7 @@
 package game;
 
+import Itens.Armas;
+import Itens.Item;
 import Itens.magias.Magia;
 import Itens.magias.MagicMissile;
 import mapElement.*;
@@ -77,8 +79,8 @@ public class Action {
 				hero.setSalaX(hero.getSalaX()+x);
 				hero.setSalaY(hero.getSalaY()+y);
 			}else if(x==-1 && y==0){
-				hero.setX(0);
-				hero.setY(mapa.map[hero.getSalaX()+x][hero.getSalaY()+y].getX()-1);
+				hero.setX(mapa.map[hero.getSalaX()+x][hero.getSalaY()+y].getX()-1);
+				hero.setY(hero.getY());
 				mapa.map[hero.getSalaX()+x][hero.getSalaY()+y].setHero(hero);
 				hero.setSalaX(hero.getSalaX()+x);
 				hero.setSalaY(hero.getSalaY()+y);
@@ -236,6 +238,20 @@ public class Action {
 				}
 			}
 		}
+	}
+	public ArrayList<Armas> mostrarItem() {
+		int i=1;
+		ArrayList<Armas> armas= new ArrayList<Armas>();
+		for(Item o : hero.bolsa){
+			if(o instanceof Armas){
+				Armas arma = (Armas) o;
+				armas.add(arma);
+				System.out.println(i+"- "+arma.getName());
+			}
+		}
+		return armas;
+	}
+	public void pegarItem(int i) {
 	}
 
 

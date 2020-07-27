@@ -41,13 +41,13 @@ public class Main {
         	acao = 0; movimento = 0;
         	while (acao != 1 || movimento != 1){  		
         	if(acao == 0 && movimento == 0){
-        		System.out.printf("Turno %d\nAcoes disponiveis: e - interagir; a - atacar; q - usar magias; i - abrir inventario; m - mover; p - encerrar turno; f - sair do jogo\n", turno);
+        		System.out.printf("Turno %d\nAcoes disponiveis: e - interagir; a - atacar; q - usar magias; i - abrir inventario; m - mover; p - abrir porta; f - sair do jogo\n", turno);
         	}
         	else if(acao == 1){
-        		System.out.printf("Turno %d\nAcoes disponiveis:i - abrir inventario; m - mover; p - encerrar turno; f - sair do jogo\n", turno);             	
+        		System.out.printf("Turno %d\nAcoes disponiveis:i - abrir inventario; m - mover; p - abrir porta; f - sair do jogo\n", turno);
         	}
         	else if(movimento == 1){
-        		System.out.printf("Turno %d\nAcoes disponiveis: e - interagir; a - atacar; q - usar magias; i - abrir inventario; p - encerrar turno; f - sair do jogo\n", turno);             	
+        		System.out.printf("Turno %d\nAcoes disponiveis: e - interagir; a - atacar; q - usar magias; i - abrir inventario; p - abrir porta; f - sair do jogo\n", turno);
         	}
         	String command = keyboard.nextLine ();
             if (command.compareTo("f") == 0) {
@@ -74,6 +74,21 @@ public class Main {
                     mov = new Action(mapa1, hero);
                     mov.abrirPorta(0, 1);
                     mapa1.imprimeMap();
+                }
+            }
+            else if(command.compareTo("i") == 0){
+                mov = new Action(mapa1, hero);
+                ArrayList<Armas> armas = mov.mostrarItem();
+                if(armas.size()>0){
+                    System.out.println("Deseja usar um item ? se sim digite o numero se nao digite n");
+                     command = keyboard.nextLine ();
+                    if(command.compareTo("n") != 0 ){
+
+
+                    }
+
+
+
                 }
             }
             else if(command.compareTo("m") == 0 && movimento == 1){

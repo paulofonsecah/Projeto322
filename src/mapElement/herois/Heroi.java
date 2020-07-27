@@ -43,7 +43,7 @@ public class Heroi extends MapElement {
 	public ArrayList<Item> bolsa;
 	
 	
-	public Heroi(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p,int sx,int sy,int px, int py) { 
+	public Heroi(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p,int sx,int sy,int px, int py) {
 		super(px,py);	
 		this.name="H";
 		salaX = sx;
@@ -53,6 +53,10 @@ public class Heroi extends MapElement {
 		pocoes=p;
 		attack=3;
 		mind=8;
+		ArrayList<Item> laaa = new ArrayList<Item>();
+		Armas lala = new Armas(1,1,true,"lala");
+		laaa.add(lala);
+		bolsa=laaa;
 
 	}
 	
