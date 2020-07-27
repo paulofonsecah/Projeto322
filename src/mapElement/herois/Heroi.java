@@ -52,7 +52,7 @@ public class Heroi extends MapElement {
 		armaduras=a;
 		pocoes=p;
 		attack=3;
-		mind=8;
+		mind=3;
 
 	}
 	
