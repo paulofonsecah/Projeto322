@@ -6,11 +6,21 @@ public class Armas implements Item{
 	protected int alcance;
 	protected int bonusDados;
 	protected boolean ehDestruida;
-	
-	public Armas(int a, int b, boolean d) {
+	protected String nome;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Armas(int a, int b, boolean d,String nomeX) {
 		alcance = a;
 		bonusDados = b;
 		ehDestruida = d;
+		nome =nomeX;
 	}	
 	
 	public boolean isEhdestruida() {

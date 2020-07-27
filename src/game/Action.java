@@ -1,5 +1,7 @@
 package game;
 
+import Itens.Armas;
+import Itens.Item;
 import Itens.magias.Magia;
 import Itens.magias.MagicMissile;
 import mapElement.*;
@@ -189,6 +191,17 @@ public class Action {
 
 				}
 			}
+		}
+	}
+
+	public void mostrarItem(int x, int y) {
+		int i=1;
+		for (Item o : hero.bolsa) {
+			if(o instanceof Armas){
+				Armas a = (Armas) o;
+				System.out.println(i+a.getNome());
+			}
+
 		}
 	}
 

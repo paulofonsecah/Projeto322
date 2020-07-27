@@ -22,6 +22,7 @@ public class Main {
 		ArrayList<Armas> w = new ArrayList<Armas>();
 		ArrayList<Armor> a = new ArrayList<Armor>();
 		ArrayList<Potions> p = new ArrayList<Potions>();
+		Armas arma = new Armas(1,1,false,"teste");
 		
 		Heroi hero = new Heroi(w, a, p,1,1,3,3); //Posi��o inicial do Heroi: (3,3) na sala (1,1)
         mapa1 = mapas.criarMapa(mapa1,hero);
@@ -35,11 +36,17 @@ public class Main {
 		boolean running = true ;
         while ( running ) {
         
-        	System.out.printf("Turno %d \n Acoes disponiveis: e - interagir; a - atacar; m - mover;  p - abrir porta; f - sair\n", turno);
+        	System.out.printf("Turno %d \n Acoes disponiveis: a - atacar; m - mover;  p - abrir porta; e - equipar ;f - sair \n", turno);
             String command = keyboard.nextLine ();
             if ( command . compareTo ("f") == 0) {
+                running = false;
+            }else if ( command . compareTo ("e") == 0) {
+                mov = new Action(mapa1, hero);
+                mov.abrirPorta(1, 0);
+                mapa1.imprimeMap();
+
                 running = false ;
-            } 
+            }
             else if(command.compareTo("p") == 0){
                 System.out.printf("Onde esta a porta: w - cima; a - esquerda; s - baixo; d - direita; p - parar\n");
                 command = keyboard.nextLine ();
@@ -63,7 +70,7 @@ public class Main {
                 }
             }
             else if(command.compareTo("a") == 0){
-                System.out.printf("Com : a- arma m -magica\n");
+                System.out.printf("Com : a- arma m - magic missel\n");
                 command = keyboard.nextLine ();
                 if (command.compareTo ("a") == 0) {
                     System.out.printf("Onde esta o mostro: w - cima; a - esquerda; s - baixo; d - direita; p - parar\n");
@@ -115,7 +122,6 @@ public class Main {
             else if(command.compareTo("m") == 0){
                 energia = dadoHeroi.rolarDado(2);
                 while(energia>0){
-
                     System.out.printf("Movimentos poss�veis: %d\nA��es dispon�veis: w - cima; a - esquerda; s - baixo; d - direita; p - parar\n", energia);
                     command = keyboard.nextLine ();
                     if (command.compareTo ("s") == 0) {
@@ -140,18 +146,12 @@ public class Main {
                         mapa1.imprimeMap();
                         energia -= 1;
                     }
-
                     else if ( command . compareTo ("p") == 0) {
                         energia = 0;
                     }
                 }
                 turno +=1;
             }
-
-
-
         }
- 
 	}
-      
 }
