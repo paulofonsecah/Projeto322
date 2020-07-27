@@ -1,13 +1,14 @@
 package mapElement.herois;
-import Itens.*;
-import Itens.potions.*;
-import java.util.ArrayList;
 
+import itens.armas.*;
 
 public class Barbaro extends Heroi{
-
-	public Barbaro(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p, int px, int py,int sx,int sy) {
-		super(w,a,p,px,py,sx,sy);
+	
+	EspadaLonga espadaLonga =new EspadaLonga();
+	Punhos punhos = new Punhos(); 
+	
+	public Barbaro(int px, int py) {
+		super(px,py);
 		
 		this.name="B";
 		this.attack=3;
@@ -15,9 +16,11 @@ public class Barbaro extends Heroi{
 		this.mind=2;
 		this.body=8;
 		
-		armas=w;
-		armaduras=a;
-		pocoes=p;
+		this.freeHands=0;
+		
+		this.bolsa.add(espadaLonga);
+		
+		this.armas.add(punhos);
 	}
 	
 

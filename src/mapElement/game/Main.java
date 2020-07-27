@@ -15,13 +15,15 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		Map mapa1  =new Map(4,4);
+		final Mapa2 mapas = new Mapa2();
+	
 		
 		ArrayList<Armas> w = new ArrayList<Armas>();
 		ArrayList<Armor> a = new ArrayList<Armor>();
 		ArrayList<Potions> p = new ArrayList<Potions>();
 		
-		//Heroi hero = new Heroi(w, a, p,1,1,3,3); //Posi��o inicial do Heroi: (3,3) na sala (1,1)
-        //mapa1 = mapas.criarMapa(mapa1,hero);
+		Heroi hero = new Heroi(w, a, p,1,1,3,3); //Posi��o inicial do Heroi: (3,3) na sala (1,1)
+        mapa1 = mapas.criarMapa(mapa1,hero);
         //mapa1.imprimeMap();
 		//mapa1.imprimeMap();
 		Scanner keyboard = new Scanner ( System .in);
@@ -30,36 +32,7 @@ public class Main {
 		Dado dadoHeroi = new Dado();
 		int energia;
 		boolean running = true ;
-        
-		System.out.printf("Que tipo de heroi voce deseja ser?: D - Anao, B - Barbaro, W - Feiticeiro, E - Elfo");
-        String command = keyboard.nextLine ();
-        Heroi hero;
-        if ( command . compareTo ("d") == 0) {
-        	 hero =new Anao(3,3) ;
-        }
-        else if ( command . compareTo ("b") == 0) {
-        	 hero =new Barbaro(3,3) ;
-        }
-        else if ( command . compareTo ("w") == 0) {
-        	 hero =new Feiticeiro(3,3) ;
-        }
-        else if( command . compareTo ("e") == 0) {
-        	 hero =new Elfo(3,3) ;
-        }
-        
-        System.out.printf("Em que tipo de mapa deseja jogar? 1 - Padrao , 2 - Aleatorio");
-        String command = keyboard.nextLine ();
-        if ( command . compareTo ("1") == 0) {
-        	final Mapa1 mapas = new Mapa1();
-        	mapa1 = mapas.criarMapa(mapa1, hero);
-        }
-        else if ( command . compareTo ("2") == 0) {
-        	final Mapa2 mapas = new Mapa2();
-        	mapa1 = mapas.criarMapa(mapa1, hero);
-        }
-		
-		
-		while ( running ) {
+        while ( running ) {
         
         	System.out.printf("Turno %d \n Acoes disponiveis: e - interagir; a - atacar; m - mover;  p - abrir porta; f - sair\n; w - equipar arma", turno);
             String command = keyboard.nextLine ();

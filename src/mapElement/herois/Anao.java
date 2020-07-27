@@ -1,13 +1,15 @@
 package mapElement.herois;
-import java.util.ArrayList;
 
-import Itens.*;
-import Itens.potions.*;
+import itens.armas.*;
+
 public class Anao extends Heroi {
 	
-	public Anao(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p, int px, int py,int sx,int sy) {
+	EspadaCurta espadaCurta =new EspadaCurta();
+	Punhos punhos = new Punhos(); 
+	
+	public Anao(int px, int py) {
 		
-		super(w, a, p , px, py,sx,sy);
+		super(px, py);
 		
 		this.name="D";
 		this.attack=2;
@@ -15,9 +17,10 @@ public class Anao extends Heroi {
 		this.mind=3;
 		this.body=7;
 		
-		armas=w;
-		armaduras=a;
-		pocoes=p;
+		this.freeHands=0;
+		
+		this.bolsa.add(espadaCurta);
+		this.armas.add(punhos);
 	}
 
 }

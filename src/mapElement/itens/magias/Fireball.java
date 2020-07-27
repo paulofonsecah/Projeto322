@@ -2,12 +2,12 @@ package itens.magias;
 
 import mapElement.Personagem;
 
-public class MagicMissile implements Magia {
-		
+public class Fireball implements Magia {
+
 	@Override
 	public void ehUsada(Personagem personagem) {
-		int dano=6;
-		personagem.decreaseBodyPoints(dano);
+		// TODO Auto-generated method stub
+
 	}
-	
+
 }

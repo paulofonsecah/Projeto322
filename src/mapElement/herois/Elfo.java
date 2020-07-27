@@ -1,18 +1,20 @@
 package mapElement.herois;
+
+
+
 import java.util.ArrayList;
-
-import Itens.Armas;
-import Itens.Armor;
-import Itens.potions.Potions;
-
-import magias.*;
+import itens.armas.*;
+import itens.magias.*;
 
 public class Elfo extends Heroi{
 	
-	public ArrayList<Magia> magia;
+	public ArrayList<Magia> magias;
+	SimpleHeal simpleHeal = new SimpleHeal();
+	EspadaCurta espadaCurta =new EspadaCurta();
+	Punhos punhos = new Punhos(); 
 	
-	public Elfo(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p,ArrayList<Magia> m, int px, int py,int sx,int sy) {
-		super(w,a,p,px,py,sx,sy);
+	public Elfo(int px, int py) {
+		super(px,py);
 		
 		this.name="E";
 		this.attack=2;
@@ -20,19 +22,33 @@ public class Elfo extends Heroi{
 		this.mind=4;
 		this.body=6;
 		
-		magia= m;
-		armas=w;
-		armaduras=a;
-		pocoes=p;
+		this.magias.add(simpleHeal);
+		
+		this.freeHands=0;
+		
+		this.armas.add(punhos);
+		this.bolsa.add(espadaCurta);
 	}
 
-	public ArrayList<Magia> getMagias() {
-	
-		return magia;		
+
+	public ArrayList<Magia> getMagias(){
+	return magias;
 	}
-	
+
 	public void setMagias(ArrayList<Magia> magia) {
-		this.magia=magia;
+		this.magias=magia;	
 	}
-		
+	
+	public void castSpell (Magia magia) {
+		boolean status=false;	
+		for( Magia o : this.magias ) {
+			if(o.getClass()==magia.getClass()) {
+				status=true;
+			}
+		}
+		if(status) {
+			magia.ehUsada(this);
+			this.magias.remove(magia);
+		}
+	}
 }
