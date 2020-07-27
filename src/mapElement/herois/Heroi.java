@@ -10,13 +10,15 @@ import mapElement.MapElement;
 public class Heroi extends MapElement {
 	
 	public String name;
-
 	protected int attack;
 	protected int deffense;
 	protected int mind;
 	protected int body;
 	protected int fullHands; //0-3
 	protected int salaY; 
+	protected int salaX;
+	public int Sala;
+	
 	public int getSalaY() {
 		return salaY;
 	}
@@ -33,7 +35,6 @@ public class Heroi extends MapElement {
 		this.salaX = salaX;
 	}
 
-	protected int salaX;
 	
 	protected ArrayList<Armas> armas;
 	protected ArrayList<Armor> armaduras; //MAX 2 COMO SETAR?
@@ -41,9 +42,8 @@ public class Heroi extends MapElement {
 	
 	public ArrayList<Item> bolsa;
 	
-	public int Sala;
 	
-	public Heroi(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p,int sx,int sy,int px, int py) { //COORDENADAS?? ArrayList<Armas> w, ArrayList<Armor> a,
+	public Heroi(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p,int sx,int sy,int px, int py) { 
 		super(px,py);	
 		this.name="H";
 		salaX = sx;
@@ -54,7 +54,7 @@ public class Heroi extends MapElement {
 		attack=3;
 	}
 	
-	public void mudarNome (String nome) {
+	public void setNome (String nome) {
 		this.name=nome;
 	} 
 	
@@ -82,38 +82,37 @@ public class Heroi extends MapElement {
 		return this.fullHands;
 	}
 
-	public int getHP() {
+	public int getBody() {
 		return this.body;
 	}
 
-	public int getAttackDices() {
+	public int getAttack() {
 		return this.attack;
 	}
 
-	public int getDeffensDices() {
+	public int getDeffense() {
 		return this.deffense;
 	}
 
-	public int getIntelligence() {
+	public int getMind() {
 		return this.mind;
 	}
-	public void increaseBodyPoints (int cura) {
-		this.body=this.body+cura;		
+	public void setBody (int b) {
+		this.body=b;		
 	}
 	
-	public void increaseAttackDices (int fortalece) {
-		this.attack=this.attack+fortalece;		
+	public void setAttack (int at) {
+		this.attack=at;		
 	}
 	
-	public void increaseDeffenseDices (int protege) {
-		this.deffense=this.deffense+protege;		
+	public void setDeffense (int def) {
+		this.deffense=def;		
 	}
 	
-	public void increaseMindPoints (int ensina) {
-		this.mind=this.mind+ensina;		
+	public void setMind (int mind) {
+		this.mind=mind;		
 	}
-	
-	//Bebe Po��es
+
 	public void setPotions(ArrayList<Potions> pocoes) {
 		this.pocoes=pocoes;	
 	}

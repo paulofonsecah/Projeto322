@@ -27,73 +27,130 @@ public class Action {
 	}
 	
 	
-	public void moveHeroi(int x, int y) {
-		if (mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY() + y][hero.getX() + x] instanceof Monster) {
-			System.out.print("Não é possivel se mover nesta direção. Motivo: há um monstro nela  \n");
-		} else if (mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY() + y][hero.getX() + x] instanceof Door) {
-			System.out.printf("Deseja acessar a porta? Pressione 'e' \n");
-		} else if (mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY() + y][hero.getX() + x] instanceof Treasures) {
-			System.out.printf("Não é possivel se mover nesta direção. Motivo: há um tesouro nela  \n");
-		} else if (hero.getY() + y >= 4 || hero.getX() + x >= 4 || hero.getY() + y <= 0 || hero.getX() + x <= 0) {
-			System.out.printf("Não é possivel se mover nessa direção. Motivo: parede \n");
-		} else {
-			hero.setX(hero.getX() + x);
-			hero.setY(hero.getY() + y);
-			mapa.map[hero.getSalaY()][hero.getSalaX()].setHero(hero);
+	public int moveHeroi(int x, int y){
+		if((hero.getY() >=4 && y== 1)|| (hero.getX() >=4 && x== 1) || (hero.getY() <=0 && y== -1) || (hero.getX() <=0 && x== -1)){
+        	System.out.printf("Não é possivel se mover nessa direção. Motivo: parede \n");
+        	return 0;
+		}else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()+y][hero.getX()+x] instanceof Monster) {
+        	System.out.print("Não é possivel se mover nesta direção. Motivo: há um monstro nela  \n");
+        	return 0;
+        }
+        
+        else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()+y][hero.getX()+x] instanceof Treasures){
+            System.out.printf("Não é possivel se mover nesta direção. Motivo: há um tesouro nela  \n");	
+            return 0;
+           }
+      /*  else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()+y][hero.getX()+x] instanceof Trap){
+        	int aleatNum;
+        	aleatNum = ThreadLocalRandom.current().nextInt(1, 2);
+            if(aleatNum == 1) {
+            	System.out.printf("Você caiu em uma armadilha e recebeu 2 de dano\n");
+            	hero.setBody (hero.getBody - 2);
+            	return 0;
+            }
+            else{
+            System.out.printf("Você ficou preso em uma armadilha e não pode se mover nesse turno\n");
+            return 2;
+            }
+        }*/
+	    else{
+	    	mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = new Empty(0,0);
+	        hero.setX(hero.getX()+x); 
+	        hero.setY(hero.getY()+y); 
+	        mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = hero;
+	        return 1;
+	 }
+}
 
+	public int abrirPorta() {
+		if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()+1][hero.getX()] instanceof Door) {
+			mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = new Empty(0,0);
+	        hero.setY(1); 
+	        hero.setSalaY(hero.getSalaY()+1);
+	        mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = hero;
 		}
+		else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()+1] instanceof Door) {
+			mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = new Empty(0,0);
+	        hero.setX(1); 
+	        hero.setSalaX(hero.getSalaX()+1);
+	        mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = hero;
+		}
+		else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()-1] instanceof Door) {
+			mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = new Empty(0,0);
+	        hero.setX(1); 
+	        hero.setSalaX(hero.getSalaX()-1);
+	        mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = hero;
+		}
+		else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()-1][hero.getX()] instanceof Door) {
+			mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = new Empty(0,0);
+	        hero.setY(1); 
+	        hero.setSalaY(hero.getSalaY()-1);
+	        mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()] = hero;
+		}
+		return 0;
 	}
-
-	public void abrirPorta(int x, int y){
-		if(mapa.map[hero.getSalaX()+x][hero.getSalaY()+y].getMapElement(hero.getX(),hero.getY()) instanceof Door){
-			mapa.map[hero.getSalaY()][hero.getSalaX()].setHero(null);
-			if(x==0 && y==1){
-				hero.setX(hero.getX());
-				hero.setY(0);
-				mapa.map[hero.getSalaX()+x][hero.getSalaY()+y].setHero(hero);
-				hero.setSalaX(hero.getSalaX()+x);
-				hero.setSalaY(hero.getSalaY()+y);
-			}else if(x==0 && y==-1){
-				hero.setX(hero.getX());
-				hero.setY(mapa.map[hero.getSalaX()+x][hero.getSalaY()+y].getY()-1);
-				mapa.map[hero.getSalaX()+x][hero.getSalaY()+y].setHero(hero);
-				hero.setSalaX(hero.getSalaX()+x);
-				hero.setSalaY(hero.getSalaY()+y);
-			}else if(x==-1 && y==0){
-				hero.setX(0);
-				hero.setY(mapa.map[hero.getSalaX()+x][hero.getSalaY()+y].getX()-1);
-				mapa.map[hero.getSalaX()+x][hero.getSalaY()+y].setHero(hero);
-				hero.setSalaX(hero.getSalaX()+x);
-				hero.setSalaY(hero.getSalaY()+y);
-			}else if(x==1 && y==0){
-				hero.setX(0);
-				hero.setY(hero.getY());
-				mapa.map[hero.getSalaX()+x][hero.getSalaY()+y].setHero(hero);
-				hero.setSalaX(hero.getSalaX()+x);
-				hero.setSalaY(hero.getSalaY()+y);
+	
+	public void atacarMostro(){
+		int dano, vida;
+		if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()+1][hero.getX()] instanceof Monster) {
+			Dado dice = new Dado();
+			dano = dice.rolarDadoAttack(0, hero.getAttack(), monster.getDeffense());
+			vida = monster.getBody()-dano;
+			monster.setBody(vida);
+			if (vida<=0) {
+				System.out.printf("Monstro eliminado!\n");
+				mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()+1][hero.getX()] = new Empty(0,0);
 			}
-		}else{
-			System.out.println("ops isso nao eh um porta");
-		}
-	}
-	public void atacarMostro(int x, int y){
-		if(mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement(hero.getX()+x,hero.getY()+y) instanceof Monster){
-			Dado dadoHeroi = new Dado();
-			ArrayList<Integer> dados =dadoHeroi.rolarDadoAttack(hero.getAttackDices());
-			Monster monster = (Monster) mapa.map[hero.getSalaX()][hero.getSalaY()].getMapElement(hero.getX() + x, hero.getY() + y);
-			monster.setBody(monster.getBody()-dados.get(0)-dados.get(2));
-			if(monster.getBody()<=0){
-				Empty vasio =new Empty(hero.getX()+x,hero.getY()+y);
-				mapa.map[hero.getSalaY()][hero.getSalaX()].setMapElement(hero.getX()+x,hero.getY()+y,vasio);
-			}else{
-				mapa.map[hero.getSalaX()][hero.getSalaY()].setMapElement(hero.getX()+x,hero.getY()+y,monster);
+			else {
+				System.out.printf("Vida restante do monstro: %d\n", vida);
 			}
-		}else{
-			System.out.println("ops isso nao eh um mostro");
 		}
+		else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()-1][hero.getX()] instanceof Monster) {
+			Dado dice = new Dado();
+			dano = dice.rolarDadoAttack(0, hero.getAttack(), monster.getDeffense());
+			vida = monster.getBody()-dano;
+			monster.setBody(vida);
+			if (vida<=0) {
+				System.out.printf("Monstro eliminado!\n");
+				mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()-1][hero.getX()] = new Empty(0,0);
+			}
+			else {
+				System.out.printf("Vida restante do monstro: %d\n", vida);
+			}
+		}
+		else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()+1] instanceof Monster) {
+			Dado dice = new Dado();
+			dano = dice.rolarDadoAttack(0, hero.getAttack(), monster.getDeffense());
+			vida = monster.getBody()-dano;
+			monster.setBody(vida);
+			if (vida<=0) {
+				System.out.printf("Monstro eliminado!\n");
+				mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()+1] = new Empty(0,0);
+			}
+			else {
+				System.out.printf("Vida restante do monstro: %d\n", vida);
+			}
+		}
+		else if(mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()-1] instanceof Monster) {
+			Dado dice = new Dado();
+			dano = dice.rolarDadoAttack(0, hero.getAttack(), monster.getDeffense());
+			vida = monster.getBody()-dano;
+			monster.setBody(vida);
+			if (vida<=0) {
+				System.out.printf("Monstro eliminado!\n");
+				mapa.map[hero.getSalaY()][hero.getSalaX()].room[hero.getY()][hero.getX()-1] = new Empty(0,0);
+			}
+			else {
+				System.out.printf("Vida restante do monstro: %d\n", vida);
+			}
+		}
+		else {
+			System.out.printf("Nenhum monstro proximo.");
+		}
+
 	}
 
-	public void lansarMagia(int x, int y){
+	public void lancarMagia(int x, int y){
 		if(x==0 && y==1){
 		}else if(x==0 && y==-1){
 		}else if(x==1 && y==0){
@@ -143,3 +200,4 @@ public class Action {
 	
 	
 }
+
