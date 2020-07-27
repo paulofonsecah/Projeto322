@@ -50,10 +50,25 @@ public class Heroi extends Personagem {
 	}
 
 	
-	public void setNome (String nome) {
-		this.name=nome;
-	} 
+	protected ArrayList<Armas> armas;
+	protected ArrayList<Armor> armaduras; //MAX 2 COMO SETAR?
+	protected ArrayList<Potions> pocoes;
 	
+	public ArrayList<Item> bolsa;
+	
+	
+	public Heroi(ArrayList<Armas> w, ArrayList<Armor> a, ArrayList<Potions> p,int sx,int sy,int px, int py) {
+		super(px,py);	
+		this.name="H";
+		salaX = sx;
+		salaY = sy;
+		armas=w;
+		armaduras=a;
+		pocoes=p;
+		attack=3;
+		mind=3;
+
+	}
 	
 	public ArrayList<Armor> getArmor(){
 		return armaduras;
